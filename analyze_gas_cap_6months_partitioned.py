@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """
-6-Month Gas Cap Analysis Script with Partition-Aware Processing
+Gas Cap Analysis Script
 
-This script analyzes Ethereum transactions over a 6-month period using partition-aligned
-queries to avoid timeouts. The canonical_execution_transaction table is partitioned 
-in chunks of 1000 blocks on block_number.
+Analyzes Ethereum transactions using partition-aligned queries.
 """
 
 import pandas as pd
@@ -21,9 +19,9 @@ import seaborn as sns
 # Configuration
 PROPOSED_GAS_CAP = 16_777_216  # 2^24
 BLOCKS_PER_DAY = 7200
-DAYS_TO_ANALYZE = 180  # 6 months
-PARTITION_SIZE = 1000  # Blocks per partition
-BATCH_SIZE_PARTITIONS = 10  # Process 10 partitions at a time (10,000 blocks)
+DAYS_TO_ANALYZE = 180
+PARTITION_SIZE = 1000
+BATCH_SIZE_PARTITIONS = 10
 CACHE_DIR = "gas_cap_cache_6m"
 
 def initialize_xatu():
@@ -50,18 +48,15 @@ def get_latest_block(xatu):
     except:
         pass
     
-    # Fallback
     return 22678052
 
 def process_partition_batch(xatu, start_block, end_block, batch_id):
     """Process a batch of partitions"""
-    # Ensure alignment with partitions
     start_partition = (start_block // PARTITION_SIZE) * PARTITION_SIZE
     end_partition = ((end_block - 1) // PARTITION_SIZE + 1) * PARTITION_SIZE
     
     print(f"\nProcessing batch {batch_id}: blocks {start_partition:,} to {end_partition:,}")
     
-    # Query for summary statistics
     summary_query = f"""
     SELECT 
         COUNT(*) as total_transactions,
@@ -92,7 +87,6 @@ def process_partition_batch(xatu, start_block, end_block, batch_id):
         print(f"  Error getting summary: {e}")
         return None
     
-    # Query for affected addresses (from_address)
     affected_query = f"""
     SELECT 
         from_address,
@@ -125,7 +119,6 @@ def process_partition_batch(xatu, start_block, end_block, batch_id):
         print(f"  Error getting affected addresses: {e}")
         affected_addresses = []
     
-    # Query for to_address concentration
     to_address_query = f"""
     SELECT 
         to_address,
@@ -159,7 +152,6 @@ def process_partition_batch(xatu, start_block, end_block, batch_id):
         print(f"  Query was: {to_address_query}")
         to_addresses = []
     
-    # Query for gas usage efficiency
     gas_efficiency_query = f"""
     SELECT 
         COUNT(*) as total_overprovision,
@@ -196,7 +188,6 @@ def process_partition_batch(xatu, start_block, end_block, batch_id):
         print(f"  Error getting gas efficiency: {e}")
         gas_efficiency = {}
     
-    # Store results
     batch_data = {
         'batch_id': batch_id,
         'start_block': start_partition,
@@ -207,13 +198,11 @@ def process_partition_batch(xatu, start_block, end_block, batch_id):
         'gas_efficiency': gas_efficiency
     }
     
-    # Save to cache
     cache_file = os.path.join(CACHE_DIR, f"batch_{batch_id:05d}.json")
     with open(cache_file, 'w') as f:
         json.dump(batch_data, f)
     
-    # Clear memory
-    gc.collect()
+        gc.collect()
     
     return batch_data.get('summary', {})
 
@@ -221,7 +210,6 @@ def aggregate_results():
     """Aggregate all batch results"""
     print("\nAggregating results from all batches...")
     
-    # Initialize aggregation
     total_transactions = 0
     total_affected = 0
     total_high_gas = 0
@@ -237,7 +225,6 @@ def aggregate_results():
         'max_gas_used': 0
     }
     
-    # Process each batch file
     batch_files = sorted([f for f in os.listdir(CACHE_DIR) if f.startswith('batch_')])
     print(f"Found {len(batch_files)} batch files to aggregate")
     
@@ -398,16 +385,16 @@ This report presents a comprehensive 6-month empirical analysis of EIP-7983, whi
 ### 2. Economic Impact
 - **Total Additional Gas Cost**: {results['total_additional_gas_cost']:,.0f} gas units
 - **Total Additional Cost (ETH)**: {results['total_additional_cost_eth']:.4f} ETH
-- **Average Gas Cost per Affected Transaction**: {results['total_additional_gas_cost']/results['total_affected']:,.0f} gas units if results['total_affected'] > 0 else 'N/A'
-- **Average Cost per Affected Transaction**: {results['total_additional_cost_eth']/results['total_affected']:.6f} ETH if results['total_affected'] > 0 else 'N/A'
-- **Average Cost per Affected Address**: {results['total_additional_cost_eth']/results['unique_addresses']:.6f} ETH if results['unique_addresses'] > 0 else 'N/A'
+- **Average Gas Cost per Affected Transaction**: {results['total_additional_gas_cost']/results['total_affected']:,.0f} gas units
+- **Average Cost per Affected Transaction**: {results['total_additional_cost_eth']/results['total_affected']:.6f} ETH
+- **Average Cost per Affected Address**: {results['total_additional_cost_eth']/results['unique_addresses']:.6f} ETH
 
 **Note**: ETH costs assume historical gas prices. With ETH at $2,500 and a base fee of X gwei, actual costs would be: gas_cost × base_fee × ETH_price / 1e9
 
 ### 3. To-Address Concentration
 - **Unique To-Addresses**: {results['unique_to_addresses']:,}
 - **Concentration Ratio**: {results['unique_to_addresses']/results['unique_addresses']:.2f} to-addresses per from-address
-- **Top 10 Recipients**: Receiving {sum(addr['transaction_count'] for addr in results['top_to_addresses'][:10]):,} ({sum(addr['transaction_count'] for addr in results['top_to_addresses'][:10]) / results['total_affected'] * 100:.1f}%) of affected transactions
+- **Top 10 Recipients**: Receiving {sum(addr['transaction_count'] for addr in results['top_to_addresses'][:10]):,} transactions ({sum(addr['transaction_count'] for addr in results['top_to_addresses'][:10]) / results['total_affected'] * 100:.1f}% of affected transactions)
 
 ### 4. Gas Usage Efficiency
 {f"- **Total Transactions with Gas Limit > 2^24**: {results['gas_efficiency']['total_affected_transactions']:,}" if results.get('gas_efficiency') else "Gas efficiency data not available"}
