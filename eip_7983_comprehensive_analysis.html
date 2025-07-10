@@ -7534,8 +7534,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import required libraries</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -7545,14 +7544,12 @@ a.anchor-link {
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">clear_output</span>
 <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
 
-<span class="c1"># Set display options</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_rows'</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_columns'</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.width'</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.float_format'</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">'</span><span class="si">%.6f</span><span class="s1">'</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
 
-<span class="c1"># Set plot style with consistent theming</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'default'</span><span class="p">)</span>  <span class="c1"># Start with default</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'default'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.facecolor'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'white'</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'axes.facecolor'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'white'</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'axes.edgecolor'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'lightgray'</span>
@@ -7568,18 +7565,17 @@ a.anchor-link {
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'ytick.labelsize'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'legend.fontsize'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
 
-<span class="c1"># Define consistent color palette</span>
 <span class="n">COLORS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'primary'</span><span class="p">:</span> <span class="s1">'#2E86AB'</span><span class="p">,</span>      <span class="c1"># Deep blue</span>
-    <span class="s1">'secondary'</span><span class="p">:</span> <span class="s1">'#A23B72'</span><span class="p">,</span>    <span class="c1"># Burgundy</span>
-    <span class="s1">'accent'</span><span class="p">:</span> <span class="s1">'#F18F01'</span><span class="p">,</span>       <span class="c1"># Orange</span>
-    <span class="s1">'success'</span><span class="p">:</span> <span class="s1">'#51CF66'</span><span class="p">,</span>      <span class="c1"># Green</span>
-    <span class="s1">'danger'</span><span class="p">:</span> <span class="s1">'#FF6B6B'</span><span class="p">,</span>       <span class="c1"># Red</span>
-    <span class="s1">'warning'</span><span class="p">:</span> <span class="s1">'#FFD93D'</span><span class="p">,</span>      <span class="c1"># Yellow</span>
-    <span class="s1">'info'</span><span class="p">:</span> <span class="s1">'#4ECDC4'</span><span class="p">,</span>         <span class="c1"># Teal</span>
-    <span class="s1">'dark'</span><span class="p">:</span> <span class="s1">'#2D3436'</span><span class="p">,</span>         <span class="c1"># Dark gray</span>
-    <span class="s1">'light'</span><span class="p">:</span> <span class="s1">'#DFE6E9'</span><span class="p">,</span>        <span class="c1"># Light gray</span>
-    <span class="s1">'neutral'</span><span class="p">:</span> <span class="s1">'#636E72'</span>       <span class="c1"># Medium gray</span>
+    <span class="s1">'primary'</span><span class="p">:</span> <span class="s1">'#2E86AB'</span><span class="p">,</span>
+    <span class="s1">'secondary'</span><span class="p">:</span> <span class="s1">'#A23B72'</span><span class="p">,</span>
+    <span class="s1">'accent'</span><span class="p">:</span> <span class="s1">'#F18F01'</span><span class="p">,</span>
+    <span class="s1">'success'</span><span class="p">:</span> <span class="s1">'#51CF66'</span><span class="p">,</span>
+    <span class="s1">'danger'</span><span class="p">:</span> <span class="s1">'#FF6B6B'</span><span class="p">,</span>
+    <span class="s1">'warning'</span><span class="p">:</span> <span class="s1">'#FFD93D'</span><span class="p">,</span>
+    <span class="s1">'info'</span><span class="p">:</span> <span class="s1">'#4ECDC4'</span><span class="p">,</span>
+    <span class="s1">'dark'</span><span class="p">:</span> <span class="s1">'#2D3436'</span><span class="p">,</span>
+    <span class="s1">'light'</span><span class="p">:</span> <span class="s1">'#DFE6E9'</span><span class="p">,</span>
+    <span class="s1">'neutral'</span><span class="p">:</span> <span class="s1">'#636E72'</span>
 <span class="p">}</span>
 
 <span class="n">PROPOSED_GAS_CAP</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">24</span><span class="p">)</span>
@@ -7607,12 +7603,9 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load the analysis results</span>
-<span class="c1"># Find the latest analysis files</span>
-<span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
-<span class="c1"># Get latest files</span>
 <span class="n">top50_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'outputs/gas_cap_6month_top50_*.csv'</span><span class="p">))</span>
 <span class="n">all_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'outputs/gas_cap_6month_all_addresses_*.csv'</span><span class="p">))</span>
 <span class="n">report_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'outputs/gas_cap_6month_report_*.md'</span><span class="p">))</span>
@@ -7624,52 +7617,43 @@ a.anchor-link {
     <span class="n">df_top50</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">df_all</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Use the latest files</span>
     <span class="n">top50_file</span> <span class="o">=</span> <span class="n">top50_files</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">all_addresses_file</span> <span class="o">=</span> <span class="n">all_files</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">report_file</span> <span class="o">=</span> <span class="n">report_files</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">report_files</span> <span class="k">else</span> <span class="kc">None</span>
     
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Using files from: </span><span class="si">{</span><span class="n">top50_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'_'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'.csv'</span><span class="p">,</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     
-    <span class="c1"># Load dataframes</span>
     <span class="n">df_top50</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">top50_file</span><span class="p">)</span>
     <span class="n">df_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">all_addresses_file</span><span class="p">)</span>
     
-    <span class="c1"># Validate dataframes are not empty</span>
     <span class="k">if</span> <span class="n">df_all</span><span class="o">.</span><span class="n">empty</span> <span class="ow">or</span> <span class="n">df_top50</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Error: Loaded dataframes are empty. Please check the analysis files."</span><span class="p">)</span>
         <span class="n">summary_stats</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># Check if new gas cost columns exist</span>
         <span class="n">has_gas_cost</span> <span class="o">=</span> <span class="s1">'additional_gas_cost'</span> <span class="ow">in</span> <span class="n">df_all</span><span class="o">.</span><span class="n">columns</span>
         
-        <span class="c1"># Extract summary statistics from the data</span>
         <span class="n">summary_stats</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">'total_blocks'</span><span class="p">:</span> <span class="mi">1_296_000</span><span class="p">,</span>  <span class="c1"># 6 months worth</span>
-            <span class="s1">'total_transactions'</span><span class="p">:</span> <span class="mi">251_922_669</span><span class="p">,</span>  <span class="c1"># From the report</span>
+            <span class="s1">'total_blocks'</span><span class="p">:</span> <span class="mi">1_296_000</span><span class="p">,</span>
+            <span class="s1">'total_transactions'</span><span class="p">:</span> <span class="mi">251_922_669</span><span class="p">,</span>
             <span class="s1">'affected_transactions'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span> <span class="k">if</span> <span class="s1">'transaction_count'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df_all</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
             <span class="s1">'unique_addresses'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_all</span><span class="p">),</span>
             <span class="s1">'total_additional_cost_eth'</span><span class="p">:</span> <span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
             <span class="s1">'avg_cost_per_address'</span><span class="p">:</span> <span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span>
         <span class="p">}</span>
         
-        <span class="c1"># Add gas cost statistics if available</span>
         <span class="k">if</span> <span class="n">has_gas_cost</span><span class="p">:</span>
             <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'total_additional_gas_cost'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'additional_gas_cost'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
             <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'avg_gas_cost_per_address'</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'total_additional_gas_cost'</span><span class="p">]</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span>
             <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'avg_gas_cost_per_tx'</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'total_additional_gas_cost'</span><span class="p">]</span> <span class="o">/</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'affected_transactions'</span><span class="p">]</span>
         
-        <span class="c1"># If we have transaction counts, use the sum</span>
         <span class="k">if</span> <span class="s1">'transaction_count'</span> <span class="ow">in</span> <span class="n">df_all</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'affected_transactions'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         
-        <span class="c1"># Prevent division by zero</span>
         <span class="k">if</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'total_transactions'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'impact_percentage'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">summary_stats</span><span class="p">[</span><span class="s1">'affected_transactions'</span><span class="p">]</span> <span class="o">/</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'total_transactions'</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'impact_percentage'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         
-        <span class="c1"># Display summary</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"ANALYSIS SUMMARY"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
@@ -7755,7 +7739,6 @@ Note: To estimate costs with current conditions:
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">calculate_lorenz_curve</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Calculate Lorenz curve data for impact concentration"""</span>
-    <span class="c1"># Calculate total cost for each address</span>
     <span class="n">df_with_total</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">df_with_total</span><span class="p">[</span><span class="s1">'total_cost'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_with_total</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_with_total</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span>
     
@@ -7790,12 +7773,10 @@ Note: To estimate costs with current conditions:
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="c1"># Calculate top 10% impact correctly using total cost</span>
     <span class="n">x_target</span> <span class="o">=</span> <span class="mi">90</span>
     <span class="n">y_at_90</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">)]</span>
     <span class="n">top_10_pct_impact</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">y_at_90</span>
 
-    <span class="c1"># Annotate correctly</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Top 10% of addresses</span><span class="se">\n</span><span class="s1">account for </span><span class="si">{</span><span class="n">top_10_pct_impact</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">% of impact'</span><span class="p">,</span>
             <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x_target</span><span class="p">,</span> <span class="n">y_at_90</span><span class="p">),</span>
             <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">85</span><span class="p">),</span>
@@ -7870,18 +7851,14 @@ Name: transaction_count, dtype: int64</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check if data is loaded</span>
-<span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">summary_stats</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">summary_stats</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Please run the data loading cell first!"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Check if we have gas cost data</span>
     <span class="n">has_gas_cost</span> <span class="o">=</span> <span class="s1">'additional_gas_cost'</span> <span class="ow">in</span> <span class="n">df_all</span><span class="o">.</span><span class="n">columns</span>
     
-    <span class="c1"># Create comprehensive distribution plot</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
 
-    <span class="c1"># 1. Transaction count distribution</span>
     <span class="n">ax1</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="mi">50</span><span class="p">)</span>
@@ -7894,7 +7871,6 @@ Name: transaction_count, dtype: int64</pre>
     <span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="c1"># 2. Gas usage distribution</span>
     <span class="n">ax2</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">gas_millions</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">'avg_gas_limit'</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e6</span>
@@ -7908,20 +7884,8 @@ Name: transaction_count, dtype: int64</pre>
     <span class="n">ax2</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="c1"># 3. Cost impact distribution (log scale)</span>
     <span class="n">ax3</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
-    <span class="c1">#if has_gas_cost:</span>
-    <span class="c1">#    # Plot gas cost distribution when available</span>
-    <span class="c1">#    cost_data = df_all['additional_gas_cost'][df_all['additional_gas_cost'] &gt; 0]</span>
-    <span class="c1">#    bins = np.logspace(np.log10(cost_data.min()), np.log10(cost_data.max()), 50)</span>
-    <span class="c1">#    ax3.hist(cost_data, bins=bins, alpha=0.8, edgecolor='white', color=COLORS['accent'])</span>
-    <span class="c1">#    ax3.set_xscale('log')</span>
-    <span class="c1">#    ax3.set_xlabel('Additional Gas Cost per Address', fontsize=12)</span>
-    <span class="c1">#    ax3.set_ylabel('Number of Addresses', fontsize=12)</span>
-    <span class="c1">#    ax3.set_title('Distribution of Additional Gas Costs', fontsize=14, fontweight='bold')</span>
-    <span class="c1">#else:</span>
-    <span class="c1"># Fall back to ETH costs</span>
     <span class="n">cost_data</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">][</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">cost_data</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">cost_data</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="mi">50</span><span class="p">)</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cost_data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'accent'</span><span class="p">])</span>
@@ -7933,7 +7897,6 @@ Name: transaction_count, dtype: int64</pre>
     <span class="n">ax3</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="c1"># 4. Cumulative impact</span>
     <span class="n">ax4</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">ax4</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">sorted_df</span> <span class="o">=</span> <span class="n">df_all</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'additional_cost_eth'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -7945,7 +7908,6 @@ Name: transaction_count, dtype: int64</pre>
     <span class="n">ax4</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'danger'</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'50</span><span class="si">% o</span><span class="s1">f impact'</span><span class="p">)</span>
     <span class="n">ax4</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'warning'</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'90</span><span class="si">% o</span><span class="s1">f impact'</span><span class="p">)</span>
 
-    <span class="c1"># Find how many addresses account for 50% and 90% of impact</span>
     <span class="n">addr_50</span> <span class="o">=</span> <span class="p">(</span><span class="n">cumsum_pct</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">addr_90</span> <span class="o">=</span> <span class="p">(</span><span class="n">cumsum_pct</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
 
@@ -7963,7 +7925,6 @@ Name: transaction_count, dtype: int64</pre>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-    <span class="c1"># Print key statistics</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"DISTRIBUTION STATISTICS"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
@@ -8033,15 +7994,13 @@ Median gas cost per address: 21,000 gas units
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load to-address analysis data</span>
-<span class="n">to_address_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'outputs/gas_cap_6month_to_addresses_*.csv'</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">to_address_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'outputs/gas_cap_6month_to_addresses_*.csv'</span><span class="p">))</span>
 <span class="n">efficiency_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'outputs/gas_cap_6month_efficiency_*.json'</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">to_address_files</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"To-address analysis not found. Please re-run the analysis script."</span><span class="p">)</span>
     <span class="n">df_to_addresses</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Load the latest to-address data</span>
     <span class="n">to_address_file</span> <span class="o">=</span> <span class="n">to_address_files</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">df_to_addresses</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">to_address_file</span><span class="p">)</span>
     
@@ -8049,18 +8008,15 @@ Median gas cost per address: 21,000 gas units
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total unique to-addresses: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_to_addresses</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total transactions to these addresses: </span><span class="si">{</span><span class="n">df_to_addresses</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     
-    <span class="c1"># Calculate concentration metrics</span>
     <span class="n">concentration_ratio</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_to_addresses</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span> <span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">0</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Concentration ratio: </span><span class="si">{</span><span class="n">concentration_ratio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> to-addresses per from-address"</span><span class="p">)</span>
     
-    <span class="c1"># Top 10 recipients</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Top 10 Recipient Addresses:"</span><span class="p">)</span>
     <span class="n">top_10_to</span> <span class="o">=</span> <span class="n">df_to_addresses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">top_10_to</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
         <span class="n">pct</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_to_addresses</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">*</span> <span class="mi">100</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'to_address'</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> txs (</span><span class="si">{</span><span class="n">pct</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
     
-    <span class="c1"># What percentage of transactions go to top N addresses?</span>
     <span class="n">top_n_analysis</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_to_addresses</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">:</span>
@@ -8167,19 +8123,16 @@ To-Address Concentration:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Visualize to-address concentration</span>
-<span class="k">if</span> <span class="n">df_to_addresses</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">df_to_addresses</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     
-    <span class="c1"># 1. Top 20 recipient addresses</span>
     <span class="n">ax1</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">top_20_to</span> <span class="o">=</span> <span class="n">df_to_addresses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">addresses</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">addr</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span><span class="si">}</span><span class="s2">...</span><span class="si">{</span><span class="n">addr</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">addr</span> <span class="ow">in</span> <span class="n">top_20_to</span><span class="p">[</span><span class="s1">'to_address'</span><span class="p">]]</span>
     <span class="n">tx_counts</span> <span class="o">=</span> <span class="n">top_20_to</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
     
-    <span class="c1"># Create gradient colors</span>
     <span class="n">colors_gradient</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greens</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">addresses</span><span class="p">)))</span>
     
     <span class="n">bars</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">addresses</span><span class="p">,</span> <span class="n">tx_counts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors_gradient</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -8189,14 +8142,12 @@ To-Address Concentration:
     <span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     
-    <span class="c1"># Add percentage labels</span>
     <span class="n">total_to_txs</span> <span class="o">=</span> <span class="n">df_to_addresses</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">bars</span><span class="p">,</span> <span class="n">tx_counts</span><span class="p">)):</span>
         <span class="n">percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">count</span> <span class="o">/</span> <span class="n">total_to_txs</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
         <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">tx_counts</span><span class="p">)</span><span class="o">*</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> 
                 <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">percentage</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'success'</span><span class="p">])</span>
     
-    <span class="c1"># 2. Lorenz curve for to-addresses</span>
     <span class="n">ax2</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">sorted_to</span> <span class="o">=</span> <span class="n">df_to_addresses</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'transaction_count'</span><span class="p">)</span>
@@ -8216,14 +8167,12 @@ To-Address Concentration:
     <span class="n">ax2</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     
-    <span class="c1"># Calculate Gini coefficient</span>
     <span class="n">area_under_lorenz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
     <span class="n">area_under_equality</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="n">gini_to</span> <span class="o">=</span> <span class="p">(</span><span class="n">area_under_equality</span> <span class="o">-</span> <span class="n">area_under_lorenz</span><span class="p">)</span> <span class="o">/</span> <span class="n">area_under_equality</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Gini: </span><span class="si">{</span><span class="n">gini_to</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax2</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> 
              <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">'round'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'danger'</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'none'</span><span class="p">))</span>
     
-    <span class="c1"># 3. From vs To address comparison</span>
     <span class="n">ax3</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">comparison_data</span> <span class="o">=</span> <span class="p">{</span>
@@ -8240,20 +8189,17 @@ To-Address Concentration:
     <span class="n">ax3</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     
-    <span class="c1"># Add value labels</span>
     <span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">:</span>
         <span class="n">height</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
         <span class="n">ax3</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span> <span class="n">height</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">comparison_data</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">*</span><span class="mf">0.01</span><span class="p">,</span>
                 <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'bottom'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
     
-    <span class="c1"># Add ratio annotation</span>
     <span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ratio</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_to_addresses</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span>
         <span class="n">ax3</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Concentration Ratio: </span><span class="si">{</span><span class="n">ratio</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax3</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> 
                 <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'top'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
                 <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">'round,pad=0.5'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'info'</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'none'</span><span class="p">))</span>
     
-    <span class="c1"># 4. Transaction distribution histogram</span>
     <span class="n">ax4</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">ax4</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df_to_addresses</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="mi">50</span><span class="p">)</span>
@@ -8270,7 +8216,6 @@ To-Address Concentration:
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     
-    <span class="c1"># Summary insights</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"TO-ADDRESS CONCENTRATION INSIGHTS"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
@@ -8317,8 +8262,7 @@ TO-ADDRESS CONCENTRATION INSIGHTS
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load gas efficiency analysis</span>
-<span class="n">gas_efficiency</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">gas_efficiency</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">if</span> <span class="n">efficiency_files</span><span class="p">:</span>
     <span class="n">efficiency_file</span> <span class="o">=</span> <span class="n">efficiency_files</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">efficiency_file</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -8340,7 +8284,6 @@ TO-ADDRESS CONCENTRATION INSIGHTS
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Min gas used: </span><span class="si">{</span><span class="n">gas_efficiency</span><span class="p">[</span><span class="s1">'min_gas_used'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Max gas used: </span><span class="si">{</span><span class="n">gas_efficiency</span><span class="p">[</span><span class="s1">'max_gas_used'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         
-        <span class="c1"># Create a summary table</span>
         <span class="n">efficiency_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
             <span class="p">{</span><span class="s1">'Metric'</span><span class="p">:</span> <span class="s1">'Total High Gas Limit Transactions'</span><span class="p">,</span> <span class="s1">'Value'</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">gas_efficiency</span><span class="p">[</span><span class="s1">'total_affected_transactions'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span>
             <span class="p">{</span><span class="s1">'Metric'</span><span class="p">:</span> <span class="s1">'Actually Needed &gt; 2^24 Gas'</span><span class="p">,</span> <span class="s1">'Value'</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">gas_efficiency</span><span class="p">[</span><span class="s1">'total_affected_transactions'</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gas_efficiency</span><span class="p">[</span><span class="s1">'unnecessary_high_limit_count'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span>
@@ -8457,12 +8400,10 @@ Gas usage statistics:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Visualize gas efficiency</span>
-<span class="k">if</span> <span class="n">gas_efficiency</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">gas_efficiency</span><span class="p">:</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     
-    <span class="c1"># 1. Pie chart of necessity</span>
     <span class="n">ax1</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Actually Needed &gt; 2^24'</span><span class="p">,</span> <span class="s1">'Could Have Used &lt; 2^24'</span><span class="p">]</span>
@@ -8476,14 +8417,12 @@ Gas usage statistics:
                                        <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">textprops</span><span class="o">=</span><span class="p">{</span><span class="s1">'fontsize'</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Gas Limit Necessity Analysis'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
     
-    <span class="c1"># Add count labels</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">wedge</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">wedges</span><span class="p">,</span> <span class="n">values</span><span class="p">)):</span>
         <span class="n">angle</span> <span class="o">=</span> <span class="p">(</span><span class="n">wedge</span><span class="o">.</span><span class="n">theta2</span> <span class="o">+</span> <span class="n">wedge</span><span class="o">.</span><span class="n">theta1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">wedge</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">wedge</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
         <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
     
-    <span class="c1"># 2. Bar chart comparing gas limit vs gas used</span>
     <span class="n">ax2</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">gas_metrics</span> <span class="o">=</span> <span class="p">{</span>
@@ -8500,29 +8439,24 @@ Gas usage statistics:
     <span class="n">ax2</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     
-    <span class="c1"># Add value labels</span>
     <span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">:</span>
         <span class="n">height</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
         <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span> <span class="n">height</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">gas_metrics</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">*</span><span class="mf">0.01</span><span class="p">,</span>
                 <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'bottom'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
     
-    <span class="c1"># Add efficiency annotation</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Efficiency: </span><span class="si">{</span><span class="n">gas_efficiency</span><span class="p">[</span><span class="s2">"avg_efficiency"</span><span class="p">]</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> 
             <span class="n">transform</span><span class="o">=</span><span class="n">ax2</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'top'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
             <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">'round'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'warning'</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'none'</span><span class="p">))</span>
     
-    <span class="c1"># Draw line at cap level</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">PROPOSED_GAS_CAP</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'danger'</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> 
                 <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'EIP-7983 Cap'</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'lightgray'</span><span class="p">)</span>
     
-    <span class="c1"># 3. Efficiency visualization</span>
     <span class="n">ax3</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">efficiency_pct</span> <span class="o">=</span> <span class="n">gas_efficiency</span><span class="p">[</span><span class="s1">'avg_efficiency'</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="n">waste_pct</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">efficiency_pct</span>
     
-    <span class="c1"># Create a horizontal stacked bar</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">barh</span><span class="p">([</span><span class="s1">'Gas Usage'</span><span class="p">],</span> <span class="p">[</span><span class="n">efficiency_pct</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'success'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Used Gas'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">barh</span><span class="p">([</span><span class="s1">'Gas Usage'</span><span class="p">],</span> <span class="p">[</span><span class="n">waste_pct</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="p">[</span><span class="n">efficiency_pct</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'danger'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Wasted Provision'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
     
@@ -8534,13 +8468,11 @@ Gas usage statistics:
     <span class="n">ax3</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     
-    <span class="c1"># Add percentage labels</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">efficiency_pct</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">efficiency_pct</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%'</span><span class="p">,</span> 
             <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">efficiency_pct</span> <span class="o">+</span> <span class="n">waste_pct</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">waste_pct</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%'</span><span class="p">,</span> 
             <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
     
-    <span class="c1"># 4. Summary insights</span>
     <span class="n">ax4</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">ax4</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
     
@@ -8611,15 +8543,13 @@ Gas usage statistics:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load CDF analysis data</span>
-<span class="n">cdf_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'outputs/cdf_analysis/data/gas_limit_cdf_*.json'</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">cdf_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'outputs/cdf_analysis/data/gas_limit_cdf_*.json'</span><span class="p">))</span>
 <span class="n">cdf_summary_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">'outputs/cdf_analysis/data/gas_limit_cdf_summary_*.txt'</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">cdf_files</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"CDF analysis not found. Please run: python generate_gas_limit_cdf.py"</span><span class="p">)</span>
     <span class="n">cdf_data</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Load the latest CDF data</span>
     <span class="n">cdf_file</span> <span class="o">=</span> <span class="n">cdf_files</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cdf_file</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">cdf_analysis</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -8634,12 +8564,10 @@ Gas usage statistics:
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Key Finding: </span><span class="si">{</span><span class="n">cap_percentage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of transactions have gas limit ≤ </span><span class="si">{</span><span class="n">PROPOSED_GAS_CAP</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This means </span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">cap_percentage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of transactions would be affected by the cap"</span><span class="p">)</span>
     
-    <span class="c1"># Show distribution breakdown</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Gas Limit Distribution:"</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">cdf_data</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>  <span class="c1"># Show first 10 buckets</span>
+    <span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">cdf_data</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • Gas ≤ </span><span class="si">{</span><span class="n">bucket</span><span class="p">[</span><span class="s1">'gas_limit'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">bucket</span><span class="p">[</span><span class="s1">'cumulative_percentage'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">bucket</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> txs)"</span><span class="p">)</span>
     
-    <span class="c1"># If we have both CDF and main analysis data, compare them</span>
     <span class="k">if</span> <span class="n">summary_stats</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Comparison with 6-month detailed analysis:"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • CDF sample size: </span><span class="si">{</span><span class="n">total_cdf_transactions</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> transactions"</span><span class="p">)</span>
@@ -8658,7 +8586,7 @@ Gas usage statistics:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Loaded CDF data from: outputs/cdf_analysis/data/gas_limit_cdf_20250708_173156.json
+<pre>Loaded CDF data from: outputs/cdf_analysis/data/gas_limit_cdf_20250710_084051.json
 Total transactions in CDF analysis: 10,486,415
 Proposed cap: 16,777,216 (16.78M)
 
@@ -8695,12 +8623,10 @@ Comparison with 6-month detailed analysis:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Visualize CDF</span>
-<span class="k">if</span> <span class="n">cdf_data</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">cdf_data</span><span class="p">:</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     
-    <span class="c1"># 1. Full CDF curve</span>
     <span class="n">ax1</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     
@@ -8711,7 +8637,6 @@ Comparison with 6-month detailed analysis:
     <span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">PROPOSED_GAS_CAP</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'danger'</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Proposed Cap'</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">cap_percentage</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'danger'</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">':'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
     
-    <span class="c1"># Add annotation for cap intersection</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">cap_percentage</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">% of transactions</span><span class="se">\n</span><span class="s1">≤ </span><span class="si">{</span><span class="n">PROPOSED_GAS_CAP</span><span class="o">/</span><span class="mf">1e6</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">M gas'</span><span class="p">,</span>
                 <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">PROPOSED_GAS_CAP</span><span class="p">,</span> <span class="n">cap_percentage</span><span class="p">),</span>
                 <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">PROPOSED_GAS_CAP</span> <span class="o">*</span> <span class="mf">1.2</span><span class="p">,</span> <span class="n">cap_percentage</span> <span class="o">-</span> <span class="mi">20</span><span class="p">),</span>
@@ -8727,7 +8652,6 @@ Comparison with 6-month detailed analysis:
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">gas_limits</span><span class="p">))</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
     
-    <span class="c1"># 2. Log scale version</span>
     <span class="n">ax2</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     
@@ -8742,11 +8666,9 @@ Comparison with 6-month detailed analysis:
     <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
     
-    <span class="c1"># 3. Distribution histogram</span>
     <span class="n">ax3</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
     
-    <span class="c1"># Extract non-cumulative counts</span>
     <span class="n">tx_counts</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cdf_data</span><span class="p">):</span>
@@ -8757,7 +8679,6 @@ Comparison with 6-month detailed analysis:
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">bucket</span><span class="p">[</span><span class="s1">'gas_limit'</span><span class="p">]</span><span class="o">/</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">M"</span><span class="p">)</span>
     
-    <span class="c1"># Create bar chart</span>
     <span class="n">bars</span> <span class="o">=</span> <span class="n">ax3</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tx_counts</span><span class="p">)),</span> <span class="n">tx_counts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'accent'</span><span class="p">],</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'right'</span><span class="p">)</span>
@@ -8766,21 +8687,17 @@ Comparison with 6-month detailed analysis:
     <span class="n">ax3</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">'log'</span><span class="p">)</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
     
-    <span class="c1"># Highlight the cap bucket</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cdf_data</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">bucket</span><span class="p">[</span><span class="s1">'gas_limit'</span><span class="p">]</span> <span class="o">==</span> <span class="n">PROPOSED_GAS_CAP</span><span class="p">:</span>
             <span class="n">bars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'danger'</span><span class="p">])</span>
             <span class="n">bars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s1">'black'</span><span class="p">)</span>
             <span class="n">bars</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     
-    <span class="c1"># 4. Impact summary</span>
     <span class="n">ax4</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">ax4</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
     
-    <span class="c1"># Create impact visualization</span>
     <span class="n">affected_pct</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">cap_percentage</span>
     
-    <span class="c1"># Pie chart showing affected vs unaffected</span>
     <span class="n">pie_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">cap_percentage</span><span class="p">,</span> <span class="n">affected_pct</span><span class="p">]</span>
     <span class="n">pie_labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'Unaffected</span><span class="se">\n</span><span class="si">{</span><span class="n">cap_percentage</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%'</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Affected</span><span class="se">\n</span><span class="si">{</span><span class="n">affected_pct</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%'</span><span class="p">]</span>
     <span class="n">colors_pie</span> <span class="o">=</span> <span class="p">[</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'success'</span><span class="p">],</span> <span class="n">COLORS</span><span class="p">[</span><span class="s1">'danger'</span><span class="p">]]</span>
@@ -8789,7 +8706,6 @@ Comparison with 6-month detailed analysis:
                   <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">textprops</span><span class="o">=</span><span class="p">{</span><span class="s1">'fontsize'</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s1">'fontweight'</span><span class="p">:</span> <span class="s1">'bold'</span><span class="p">})</span>
     <span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Transaction Impact Summary'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
     
-    <span class="c1"># Add transaction counts</span>
     <span class="n">unaffected_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_cdf_transactions</span> <span class="o">*</span> <span class="n">cap_percentage</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
     <span class="n">affected_count</span> <span class="o">=</span> <span class="n">total_cdf_transactions</span> <span class="o">-</span> <span class="n">unaffected_count</span>
     
@@ -8802,12 +8718,10 @@ Comparison with 6-month detailed analysis:
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     
-    <span class="c1"># Additional statistics</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"CDF ANALYSIS INSIGHTS"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
     
-    <span class="c1"># Find key percentiles</span>
     <span class="n">percentiles</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mf">99.9</span><span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Key Percentiles:"</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">percentiles</span><span class="p">:</span>
@@ -8816,7 +8730,6 @@ Comparison with 6-month detailed analysis:
                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">th percentile: </span><span class="si">{</span><span class="n">bucket</span><span class="p">[</span><span class="s1">'gas_limit'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> gas (</span><span class="si">{</span><span class="n">bucket</span><span class="p">[</span><span class="s1">'gas_limit'</span><span class="p">]</span><span class="o">/</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">M)"</span><span class="p">)</span>
                 <span class="k">break</span>
     
-    <span class="c1"># Find common gas limits</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Most Common Gas Limit Buckets:"</span><span class="p">)</span>
     <span class="n">sorted_buckets</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">cdf_data</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sorted_buckets</span><span class="p">[:</span><span class="mi">5</span><span class="p">]):</span>
@@ -8873,8 +8786,7 @@ Most Common Gas Limit Buckets:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Classification storage file</span>
-<span class="n">CLASSIFICATION_FILE</span> <span class="o">=</span> <span class="s1">'outputs/address_classifications/address_classifications.json'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">CLASSIFICATION_FILE</span> <span class="o">=</span> <span class="s1">'outputs/address_classifications/address_classifications.json'</span>
 
 <span class="k">def</span> <span class="nf">load_classifications</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Load existing classifications from file"""</span>
@@ -8885,17 +8797,14 @@ Most Common Gas Limit Buckets:
 
 <span class="k">def</span> <span class="nf">save_classifications</span><span class="p">(</span><span class="n">classifications</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Save classifications to file"""</span>
-    <span class="c1"># Ensure directory exists</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">'outputs/address_classifications'</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">CLASSIFICATION_FILE</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">classifications</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># Load existing classifications</span>
 <span class="n">classifications</span> <span class="o">=</span> <span class="n">load_classifications</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Loaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">classifications</span><span class="p">)</span><span class="si">}</span><span class="s2"> existing classifications"</span><span class="p">)</span>
 
-<span class="c1"># Display current classifications</span>
 <span class="k">if</span> <span class="n">classifications</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Current Classifications:"</span><span class="p">)</span>
     <span class="n">classified_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
@@ -9203,23 +9112,18 @@ Current Classifications:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Enhanced classification widget that works for both from and to addresses</span>
-<span class="k">if</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_to_addresses</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_to_addresses</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Please run the data loading cells first!"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Create combined dataframe for classification</span>
-    <span class="c1"># Add top 50 from addresses</span>
     <span class="n">top_from_df</span> <span class="o">=</span> <span class="n">df_top50</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">top_from_df</span><span class="p">[</span><span class="s1">'address_type'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'from'</span>
     <span class="n">top_from_df</span><span class="p">[</span><span class="s1">'address_key'</span><span class="p">]</span> <span class="o">=</span> <span class="n">top_from_df</span><span class="p">[</span><span class="s1">'address'</span><span class="p">]</span>
     
-    <span class="c1"># Add top 50 to addresses</span>
     <span class="k">if</span> <span class="n">df_to_addresses</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_to_addresses</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">top_to_df</span> <span class="o">=</span> <span class="n">df_to_addresses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">top_to_df</span><span class="p">[</span><span class="s1">'address_type'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'to'</span>
         <span class="n">top_to_df</span><span class="p">[</span><span class="s1">'address_key'</span><span class="p">]</span> <span class="o">=</span> <span class="n">top_to_df</span><span class="p">[</span><span class="s1">'to_address'</span><span class="p">]</span>
-        <span class="n">top_to_df</span><span class="p">[</span><span class="s1">'address'</span><span class="p">]</span> <span class="o">=</span> <span class="n">top_to_df</span><span class="p">[</span><span class="s1">'to_address'</span><span class="p">]</span>  <span class="c1"># For consistency</span>
-        <span class="c1"># Add dummy columns for compatibility</span>
+        <span class="n">top_to_df</span><span class="p">[</span><span class="s1">'address'</span><span class="p">]</span> <span class="o">=</span> <span class="n">top_to_df</span><span class="p">[</span><span class="s1">'to_address'</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">'additional_cost_eth'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">top_to_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="n">top_to_df</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="s1">'rank'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">top_to_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
@@ -9227,23 +9131,19 @@ Current Classifications:
     <span class="k">else</span><span class="p">:</span>
         <span class="n">top_to_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
     
-    <span class="c1"># Combine both dataframes</span>
     <span class="n">combined_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">top_from_df</span><span class="p">,</span> <span class="n">top_to_df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
-    <span class="c1"># Interactive classification widget</span>
     <span class="k">class</span> <span class="nc">UniversalAddressClassifier</span><span class="p">:</span>
         <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">combined_df</span><span class="p">,</span> <span class="n">existing_classifications</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">combined_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">classifications</span> <span class="o">=</span> <span class="n">existing_classifications</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current_index</span> <span class="o">=</span> <span class="mi">0</span>
             
-            <span class="c1"># Find first unclassified address</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
                 <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">'address_key'</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifications</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">current_index</span> <span class="o">=</span> <span class="n">i</span>
                     <span class="k">break</span>
             
-            <span class="c1"># Create widgets</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">entity_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
                 <span class="n">placeholder</span><span class="o">=</span><span class="s1">'Enter entity name (e.g., "Uniswap V3 Router")'</span><span class="p">,</span>
@@ -9265,7 +9165,6 @@ Current Classifications:
                 <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">'500px'</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">'60px'</span><span class="p">)</span>
             <span class="p">)</span>
             
-            <span class="c1"># Address type selector</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">type_selector</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span>
                 <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">'Show All'</span><span class="p">,</span> <span class="s1">'From Only'</span><span class="p">,</span> <span class="s1">'To Only'</span><span class="p">],</span>
                 <span class="n">value</span><span class="o">=</span><span class="s1">'Show All'</span><span class="p">,</span>
@@ -9274,12 +9173,10 @@ Current Classifications:
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">type_selector</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_changed</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">)</span>
             
-            <span class="c1"># Buttons</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">save_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">'Save &amp; Next'</span><span class="p">,</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">'success'</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">skip_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">'Skip'</span><span class="p">,</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">'warning'</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prev_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">'Previous'</span><span class="p">,</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">'info'</span><span class="p">)</span>
             
-            <span class="c1"># Progress</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntProgress</span><span class="p">(</span>
                 <span class="n">value</span><span class="o">=</span><span class="nb">len</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s1">'address_key'</span><span class="p">]</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifications</span><span class="p">]),</span>
                 <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -9288,7 +9185,6 @@ Current Classifications:
                 <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">'description_width'</span><span class="p">:</span> <span class="s1">'initial'</span><span class="p">}</span>
             <span class="p">)</span>
             
-            <span class="c1"># Button handlers</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">save_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_classification</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">skip_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">skip_address</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prev_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">previous_address</span><span class="p">)</span>
@@ -9305,7 +9201,7 @@ Current Classifications:
                 <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">)))</span>
             <span class="k">elif</span> <span class="n">filter_val</span> <span class="o">==</span> <span class="s1">'From Only'</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">'address_type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'from'</span><span class="p">]</span>
-            <span class="k">else</span><span class="p">:</span>  <span class="c1"># To Only</span>
+            <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">'address_type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'to'</span><span class="p">]</span>
             
         <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -9339,7 +9235,6 @@ Current Classifications:
                 <span class="n">row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">actual_index</span><span class="p">]</span>
                 <span class="n">address</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">'address_key'</span><span class="p">]</span>
                 
-                <span class="c1"># Check if already classified</span>
                 <span class="k">if</span> <span class="n">address</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifications</span><span class="p">:</span>
                     <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifications</span><span class="p">[</span><span class="n">address</span><span class="p">]</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">entity_input</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'entity_name'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
@@ -9378,7 +9273,6 @@ Current Classifications:
             <span class="n">row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">actual_index</span><span class="p">]</span>
             <span class="n">address</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">'address_key'</span><span class="p">]</span>
             
-            <span class="c1"># Save classification</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">classifications</span><span class="p">[</span><span class="n">address</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">'entity_name'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">entity_input</span><span class="o">.</span><span class="n">value</span> <span class="ow">or</span> <span class="s1">'Unknown Entity'</span><span class="p">,</span>
                 <span class="s1">'category'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">category_dropdown</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
@@ -9387,13 +9281,10 @@ Current Classifications:
                 <span class="s1">'classified_at'</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
             <span class="p">}</span>
             
-            <span class="c1"># Save to file</span>
             <span class="n">save_classifications</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classifications</span><span class="p">)</span>
             
-            <span class="c1"># Update progress</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s1">'address_key'</span><span class="p">]</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifications</span><span class="p">])</span>
             
-            <span class="c1"># Move to next</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current_index</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">show_current_address</span><span class="p">()</span>
         
@@ -9410,7 +9301,6 @@ Current Classifications:
                 <span class="bp">self</span><span class="o">.</span><span class="n">current_index</span> <span class="o">-=</span> <span class="mi">1</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">show_current_address</span><span class="p">()</span>
 
-    <span class="c1"># Create and display classifier</span>
     <span class="n">classifier</span> <span class="o">=</span> <span class="n">UniversalAddressClassifier</span><span class="p">(</span><span class="n">combined_df</span><span class="p">,</span> <span class="n">classifications</span><span class="p">)</span>
     <span class="n">classifier</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 </pre></div>
@@ -9475,14 +9365,11 @@ Current Classifications:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create comprehensive analysis table for top 50 from and to addresses</span>
-<span class="k">if</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_to_addresses</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_to_addresses</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Please run the data loading cells first!"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Load classifications</span>
     <span class="n">classifications</span> <span class="o">=</span> <span class="n">load_classifications</span><span class="p">()</span>
     
-    <span class="c1"># Prepare from addresses data</span>
     <span class="n">from_data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_top50</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
         <span class="n">addr</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">'address'</span><span class="p">]</span>
@@ -9497,10 +9384,9 @@ Current Classifications:
             <span class="s1">'avg_gas_limit'</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">'avg_gas_limit'</span><span class="p">],</span>
             <span class="s1">'max_gas_limit'</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">'max_gas_limit'</span><span class="p">],</span>
             <span class="s1">'additional_cost_eth'</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'additional_cost_eth'</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="s1">'impact_score'</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span> <span class="o">*</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'additional_cost_eth'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Combined metric</span>
+            <span class="s1">'impact_score'</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span> <span class="o">*</span> <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'additional_cost_eth'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="p">})</span>
     
-    <span class="c1"># Prepare to addresses data</span>
     <span class="n">to_data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">if</span> <span class="n">df_to_addresses</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_to_addresses</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_to_addresses</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
@@ -9515,26 +9401,22 @@ Current Classifications:
                 <span class="s1">'transaction_count'</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">],</span>
                 <span class="s1">'avg_gas_limit'</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">'avg_gas_limit'</span><span class="p">],</span>
                 <span class="s1">'max_gas_limit'</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">'max_gas_limit'</span><span class="p">],</span>
-                <span class="s1">'additional_cost_eth'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># TO addresses don't have direct cost</span>
-                <span class="s1">'impact_score'</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span>  <span class="c1"># Just use transaction count for TO addresses</span>
+                <span class="s1">'additional_cost_eth'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s1">'impact_score'</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span>
             <span class="p">})</span>
     
-    <span class="c1"># Create combined dataframe</span>
     <span class="n">combined_analysis_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">from_data</span> <span class="o">+</span> <span class="n">to_data</span><span class="p">)</span>
     
-    <span class="c1"># Summary statistics</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"COMPREHENSIVE FROM/TO ADDRESS ANALYSIS"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
     
-    <span class="c1"># Category breakdown for FROM addresses</span>
     <span class="n">from_category_stats</span> <span class="o">=</span> <span class="n">combined_analysis_df</span><span class="p">[</span><span class="n">combined_analysis_df</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'FROM'</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'category'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
         <span class="s1">'address'</span><span class="p">:</span> <span class="s1">'count'</span><span class="p">,</span>
         <span class="s1">'transaction_count'</span><span class="p">:</span> <span class="s1">'sum'</span><span class="p">,</span>
         <span class="s1">'additional_cost_eth'</span><span class="p">:</span> <span class="s1">'sum'</span>
     <span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'address'</span><span class="p">:</span> <span class="s1">'count'</span><span class="p">})</span>
     
-    <span class="c1"># Category breakdown for TO addresses</span>
     <span class="n">to_category_stats</span> <span class="o">=</span> <span class="n">combined_analysis_df</span><span class="p">[</span><span class="n">combined_analysis_df</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'TO'</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'category'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
         <span class="s1">'address'</span><span class="p">:</span> <span class="s1">'count'</span><span class="p">,</span>
         <span class="s1">'transaction_count'</span><span class="p">:</span> <span class="s1">'sum'</span>
@@ -9546,7 +9428,6 @@ Current Classifications:
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">TO ADDRESS CATEGORIES (Top 50):"</span><span class="p">)</span>
     <span class="n">display</span><span class="p">(</span><span class="n">to_category_stats</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'transaction_count'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
     
-    <span class="c1"># Overlap analysis - addresses that appear in both lists</span>
     <span class="n">from_addresses</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">combined_analysis_df</span><span class="p">[</span><span class="n">combined_analysis_df</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'FROM'</span><span class="p">][</span><span class="s1">'address'</span><span class="p">])</span>
     <span class="n">to_addresses</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">combined_analysis_df</span><span class="p">[</span><span class="n">combined_analysis_df</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'TO'</span><span class="p">][</span><span class="s1">'address'</span><span class="p">])</span>
     <span class="n">overlap_addresses</span> <span class="o">=</span> <span class="n">from_addresses</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">to_addresses</span><span class="p">)</span>
@@ -9742,9 +9623,7 @@ Addresses appearing in both lists:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create detailed comparison tables</span>
-<span class="k">if</span> <span class="s1">'combined_analysis_df'</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
-    <span class="c1"># Top 20 FROM addresses with classifications</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="s1">'combined_analysis_df'</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">TOP 20 FROM ADDRESSES (SENDERS):"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">115</span><span class="p">)</span>
     <span class="n">from_display</span> <span class="o">=</span> <span class="n">combined_analysis_df</span><span class="p">[</span><span class="n">combined_analysis_df</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'FROM'</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)[</span>
@@ -9756,7 +9635,6 @@ Addresses appearing in both lists:
     <span class="n">from_display</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Rank'</span><span class="p">,</span> <span class="s1">'Address'</span><span class="p">,</span> <span class="s1">'Entity'</span><span class="p">,</span> <span class="s1">'Category'</span><span class="p">,</span> <span class="s1">'Txs'</span><span class="p">,</span> <span class="s1">'Avg Gas'</span><span class="p">,</span> <span class="s1">'Cost (ETH)'</span><span class="p">]</span>
     <span class="n">display</span><span class="p">(</span><span class="n">from_display</span><span class="p">)</span>
     
-    <span class="c1"># Top 20 TO addresses with classifications</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">TOP 20 TO ADDRESSES (RECIPIENTS):"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">115</span><span class="p">)</span>
     <span class="n">to_display</span> <span class="o">=</span> <span class="n">combined_analysis_df</span><span class="p">[</span><span class="n">combined_analysis_df</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'TO'</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)[</span>
@@ -9767,7 +9645,6 @@ Addresses appearing in both lists:
     <span class="n">to_display</span><span class="p">[</span><span class="s1">'max_gas_limit'</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_display</span><span class="p">[</span><span class="s1">'max_gas_limit'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="o">/</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">M"</span><span class="p">)</span>
     <span class="n">to_display</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Rank'</span><span class="p">,</span> <span class="s1">'Address'</span><span class="p">,</span> <span class="s1">'Entity'</span><span class="p">,</span> <span class="s1">'Category'</span><span class="p">,</span> <span class="s1">'Txs'</span><span class="p">,</span> <span class="s1">'Avg Gas'</span><span class="p">,</span> <span class="s1">'Max Gas'</span><span class="p">]</span>
     <span class="n">display</span><span class="p">(</span><span class="n">to_display</span><span class="p">)</span>
-    
 </pre></div>
 </div>
 </div>
@@ -10277,15 +10154,12 @@ TOP 20 TO ADDRESSES (RECIPIENTS):
 <div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check if data is loaded</span>
-<span class="k">if</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Please run the data loading cell first!"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Generate report based on classifications</span>
     <span class="n">classifications</span> <span class="o">=</span> <span class="n">load_classifications</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">classifications</span><span class="p">:</span>
-        <span class="c1"># Merge classifications with data</span>
         <span class="n">classified_addresses</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_top50</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
             <span class="n">addr</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">'address'</span><span class="p">]</span>
@@ -10297,7 +10171,6 @@ TOP 20 TO ADDRESSES (RECIPIENTS):
         <span class="k">if</span> <span class="n">classified_addresses</span><span class="p">:</span>
             <span class="n">classified_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">classified_addresses</span><span class="p">)</span>
             <span class="n">classified_df</span><span class="p">[</span><span class="s2">"category"</span><span class="p">]</span> <span class="o">=</span> <span class="n">classified_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">"XEN User"</span> <span class="k">if</span> <span class="s2">"XEN User"</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="s2">"entity_name"</span><span class="p">]</span> <span class="k">else</span> <span class="n">x</span><span class="p">[</span><span class="s2">"category"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  
-            <span class="c1"># Category summary</span>
             <span class="n">category_summary</span> <span class="o">=</span> <span class="n">classified_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'category'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
                 <span class="s1">'address'</span><span class="p">:</span> <span class="s1">'count'</span><span class="p">,</span>
                 <span class="s1">'transaction_count'</span><span class="p">:</span> <span class="s1">'sum'</span><span class="p">,</span>
@@ -10311,11 +10184,9 @@ TOP 20 TO ADDRESSES (RECIPIENTS):
             <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
             <span class="n">display</span><span class="p">(</span><span class="n">category_summary</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
             
-            <span class="c1"># Pie chart of categories</span>
             <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
             <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
             
-            <span class="c1"># By entity count</span>
             <span class="n">ax1</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
             <span class="n">colors_pie</span> <span class="o">=</span> <span class="p">[</span><span class="n">COLORS</span><span class="p">[</span><span class="s1">'primary'</span><span class="p">],</span> <span class="n">COLORS</span><span class="p">[</span><span class="s1">'secondary'</span><span class="p">],</span> <span class="n">COLORS</span><span class="p">[</span><span class="s1">'accent'</span><span class="p">],</span> <span class="n">COLORS</span><span class="p">[</span><span class="s1">'success'</span><span class="p">],</span> 
                          <span class="n">COLORS</span><span class="p">[</span><span class="s1">'danger'</span><span class="p">],</span> <span class="n">COLORS</span><span class="p">[</span><span class="s1">'warning'</span><span class="p">],</span> <span class="n">COLORS</span><span class="p">[</span><span class="s1">'info'</span><span class="p">]][:</span><span class="nb">len</span><span class="p">(</span><span class="n">category_summary</span><span class="p">)]</span>
@@ -10324,7 +10195,6 @@ TOP 20 TO ADDRESSES (RECIPIENTS):
             <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Distribution of Entities by Category'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
             <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
             
-            <span class="c1"># By transaction count</span>
             <span class="n">ax2</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
             <span class="n">category_summary</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'pie'</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">'</span><span class="si">%1.1f%%</span><span class="s1">'</span><span class="p">,</span>
                                                       <span class="n">colors</span><span class="o">=</span><span class="n">colors_pie</span><span class="p">,</span> <span class="n">textprops</span><span class="o">=</span><span class="p">{</span><span class="s1">'fontsize'</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
@@ -10334,7 +10204,6 @@ TOP 20 TO ADDRESSES (RECIPIENTS):
             <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
             
-            <span class="c1"># Top entities by category</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">"TOP ENTITIES BY CATEGORY"</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
@@ -10495,27 +10364,21 @@ XEN USER:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check if data is loaded</span>
-<span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">summary_stats</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">summary_stats</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Please run the data loading cell first!"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Check if we have gas cost data</span>
     <span class="n">has_gas_cost</span> <span class="o">=</span> <span class="s1">'additional_gas_cost'</span> <span class="ow">in</span> <span class="n">df_all</span><span class="o">.</span><span class="n">columns</span>
     
-    <span class="c1"># Set up better color scheme</span>
     <span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">'primary'</span><span class="p">:</span> <span class="s1">'#2E86AB'</span><span class="p">,</span>      <span class="c1"># Deep blue</span>
-        <span class="s1">'secondary'</span><span class="p">:</span> <span class="s1">'#A23B72'</span><span class="p">,</span>    <span class="c1"># Burgundy</span>
-        <span class="s1">'accent'</span><span class="p">:</span> <span class="s1">'#F18F01'</span><span class="p">,</span>       <span class="c1"># Orange</span>
-        <span class="s1">'positive'</span><span class="p">:</span> <span class="s1">'#C73E1D'</span><span class="p">,</span>     <span class="c1"># Red-orange</span>
-        <span class="s1">'neutral'</span><span class="p">:</span> <span class="s1">'#6C757D'</span><span class="p">,</span>      <span class="c1"># Gray</span>
-        <span class="s1">'light'</span><span class="p">:</span> <span class="s1">'#B8B8D1'</span><span class="p">,</span>        <span class="c1"># Light purple</span>
-        <span class="s1">'dark'</span><span class="p">:</span> <span class="s1">'#2D3436'</span>          <span class="c1"># Dark gray</span>
+        <span class="s1">'primary'</span><span class="p">:</span> <span class="s1">'#2E86AB'</span><span class="p">,</span>
+        <span class="s1">'secondary'</span><span class="p">:</span> <span class="s1">'#A23B72'</span><span class="p">,</span>
+        <span class="s1">'accent'</span><span class="p">:</span> <span class="s1">'#F18F01'</span><span class="p">,</span>
+        <span class="s1">'positive'</span><span class="p">:</span> <span class="s1">'#C73E1D'</span><span class="p">,</span>
+        <span class="s1">'neutral'</span><span class="p">:</span> <span class="s1">'#6C757D'</span><span class="p">,</span>
+        <span class="s1">'light'</span><span class="p">:</span> <span class="s1">'#B8B8D1'</span><span class="p">,</span>
+        <span class="s1">'dark'</span><span class="p">:</span> <span class="s1">'#2D3436'</span>
     <span class="p">}</span>
     
-
-
-    <span class="c1"># Print detailed per-transaction statistics</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"PER-TRANSACTION ECONOMIC IMPACT ANALYSIS"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
@@ -10620,14 +10483,11 @@ IMPACT CONCENTRATION (in ETH/tx):
 <div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check if data is loaded</span>
-<span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">summary_stats</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">summary_stats</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Please run all the previous data loading and analysis cells first!"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Check if we have gas cost data</span>
     <span class="n">has_gas_cost</span> <span class="o">=</span> <span class="s1">'total_additional_gas_cost'</span> <span class="ow">in</span> <span class="n">summary_stats</span>
     
-    <span class="c1"># Generate final summary report</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"EIP-7983 COMPREHENSIVE ANALYSIS - EXECUTIVE SUMMARY"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
@@ -10650,7 +10510,6 @@ IMPACT CONCENTRATION (in ETH/tx):
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • Average Cost per Address: </span><span class="si">{</span><span class="n">summary_stats</span><span class="p">[</span><span class="s1">'avg_cost_per_address'</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> ETH"</span><span class="p">)</span>
     
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">CONCENTRATION ANALYSIS:"</span><span class="p">)</span>
-    <span class="c1"># Calculate concentration metrics correctly using total cost</span>
     <span class="n">df_with_total</span> <span class="o">=</span> <span class="n">df_all</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">df_with_total</span><span class="p">[</span><span class="s1">'total_cost'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_with_total</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_with_total</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span>
     <span class="n">top_10_pct</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">)</span>
@@ -10664,11 +10523,9 @@ IMPACT CONCENTRATION (in ETH/tx):
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">ENTITY ANALYSIS (Based on Classifications):"</span><span class="p">)</span>
     <span class="n">classifications</span> <span class="o">=</span> <span class="n">load_classifications</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">classifications</span><span class="p">:</span>
-        <span class="c1"># Count classified addresses in top 50</span>
         <span class="n">classified_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">addr</span> <span class="ow">in</span> <span class="n">df_top50</span><span class="p">[</span><span class="s1">'address'</span><span class="p">]</span> <span class="k">if</span> <span class="n">addr</span> <span class="ow">in</span> <span class="n">classifications</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • </span><span class="si">{</span><span class="n">classified_count</span><span class="si">}</span><span class="s2"> of top 50 addresses have been classified"</span><span class="p">)</span>
         
-        <span class="c1"># Get category breakdown for classified addresses</span>
         <span class="n">categories</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">addr</span> <span class="ow">in</span> <span class="n">df_top50</span><span class="p">[</span><span class="s1">'address'</span><span class="p">]:</span>
             <span class="k">if</span> <span class="n">addr</span> <span class="ow">in</span> <span class="n">classifications</span><span class="p">:</span>
@@ -10688,14 +10545,12 @@ IMPACT CONCENTRATION (in ETH/tx):
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • 95th percentile impact: </span><span class="si">{</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.95</span><span class="p">)</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> ETH"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • Median impact: </span><span class="si">{</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> ETH"</span><span class="p">)</span>
 
-    <span class="c1"># Gas efficiency insights</span>
     <span class="k">if</span> <span class="s1">'gas_efficiency'</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span> <span class="ow">and</span> <span class="n">gas_efficiency</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">GAS EFFICIENCY INSIGHTS:"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • </span><span class="si">{</span><span class="n">gas_efficiency</span><span class="p">[</span><span class="s1">'unnecessary_percentage'</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% of high gas limit transactions didn't actually need &gt; 2^24 gas"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • Average gas efficiency: </span><span class="si">{</span><span class="n">gas_efficiency</span><span class="p">[</span><span class="s1">'avg_efficiency'</span><span class="p">]</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • </span><span class="si">{</span><span class="n">gas_efficiency</span><span class="p">[</span><span class="s1">'unnecessary_high_limit_count'</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> transactions could work with the cap without changes"</span><span class="p">)</span>
 
-    <span class="c1"># To-address concentration insights</span>
     <span class="k">if</span> <span class="s1">'df_to_addresses'</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span> <span class="ow">and</span> <span class="n">df_to_addresses</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">TO-ADDRESS CONCENTRATION:"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  • </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_to_addresses</span><span class="p">)</span><span class="si">}</span><span class="s2"> unique recipient addresses (vs </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span><span class="si">}</span><span class="s2"> sender addresses)"</span><span class="p">)</span>
@@ -10800,11 +10655,9 @@ CONCLUSIONS:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check if data is loaded</span>
-<span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">summary_stats</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df_top50</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">summary_stats</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Please run the data loading cells first!"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Export comprehensive report</span>
     <span class="k">def</span> <span class="nf">generate_final_report</span><span class="p">():</span>
 <span class="w">        </span><span class="sd">"""Generate a comprehensive markdown report"""</span>
         <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span>
@@ -10812,12 +10665,10 @@ CONCLUSIONS:
         
         <span class="n">classifications</span> <span class="o">=</span> <span class="n">load_classifications</span><span class="p">()</span>
         
-        <span class="c1"># Calculate metrics needed for report</span>
         <span class="n">top_10_pct</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">)</span>
         <span class="n">top_10_pct_cost</span> <span class="o">=</span> <span class="n">df_all</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="n">top_10_pct</span><span class="p">,</span> <span class="s1">'additional_cost_eth'</span><span class="p">)[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="n">top_10_pct_share</span> <span class="o">=</span> <span class="n">top_10_pct_cost</span> <span class="o">/</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">'total_additional_cost_eth'</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
         
-        <span class="c1"># Calculate gini coefficient if not already done</span>
         <span class="n">sorted_df</span> <span class="o">=</span> <span class="n">df_all</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'additional_cost_eth'</span><span class="p">)</span>
         <span class="n">cumsum_cost</span> <span class="o">=</span> <span class="n">sorted_df</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
         <span class="n">total_cost</span> <span class="o">=</span> <span class="n">sorted_df</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -10895,7 +10746,6 @@ CONCLUSIONS:
         
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✅ Report saved to: </span><span class="si">{</span><span class="n">report_filename</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         
-        <span class="c1"># Also export classified addresses if available</span>
         <span class="k">if</span> <span class="n">classifications</span><span class="p">:</span>
             <span class="n">classified_export</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">addr</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">classifications</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -10910,7 +10760,6 @@ CONCLUSIONS:
                 <span class="n">classified_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">classified_filename</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✅ Classified addresses saved to: </span><span class="si">{</span><span class="n">classified_filename</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-    <span class="c1"># Generate the report</span>
     <span class="n">generate_final_report</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -10924,8 +10773,8 @@ CONCLUSIONS:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>✅ Report saved to: outputs/reports/eip_7983_final_report_20250710_083104.md
-✅ Classified addresses saved to: outputs/address_classifications/eip_7983_classified_addresses_20250710_083104.csv
+<pre>✅ Report saved to: outputs/reports/eip_7983_final_report_20250710_090554.md
+✅ Classified addresses saved to: outputs/address_classifications/eip_7983_classified_addresses_20250710_090554.csv
 </pre>
 </div>
 </div>
@@ -10939,28 +10788,21 @@ CONCLUSIONS:
 <div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Export comprehensive FROM/TO analysis</span>
-<span class="k">if</span> <span class="s1">'combined_analysis_df'</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
-    <span class="c1"># Export the comprehensive analysis</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="s1">'combined_analysis_df'</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
     <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span>
     
-    <span class="c1"># Export full combined analysis</span>
     <span class="n">export_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'outputs/eip_7983_from_to_analysis_</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s1">.csv'</span>
     <span class="n">export_df</span> <span class="o">=</span> <span class="n">combined_analysis_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     
-    <span class="c1"># Add shortened address for readability</span>
     <span class="n">export_df</span><span class="p">[</span><span class="s1">'address_short'</span><span class="p">]</span> <span class="o">=</span> <span class="n">export_df</span><span class="p">[</span><span class="s1">'address'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">...</span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">:]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     
-    <span class="c1"># Reorder columns for better readability</span>
     <span class="n">column_order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'rank'</span><span class="p">,</span> <span class="s1">'type'</span><span class="p">,</span> <span class="s1">'address'</span><span class="p">,</span> <span class="s1">'address_short'</span><span class="p">,</span> <span class="s1">'entity_name'</span><span class="p">,</span> <span class="s1">'category'</span><span class="p">,</span> 
                     <span class="s1">'transaction_count'</span><span class="p">,</span> <span class="s1">'avg_gas_limit'</span><span class="p">,</span> <span class="s1">'max_gas_limit'</span><span class="p">,</span> <span class="s1">'additional_cost_eth'</span><span class="p">,</span> <span class="s1">'impact_score'</span><span class="p">]</span>
     <span class="n">export_df</span> <span class="o">=</span> <span class="n">export_df</span><span class="p">[</span><span class="n">column_order</span><span class="p">]</span>
     
-    <span class="c1"># Save to CSV</span>
     <span class="n">export_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">export_filename</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✅ Comprehensive FROM/TO analysis exported to: </span><span class="si">{</span><span class="n">export_filename</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     
-    <span class="c1"># Create summary report</span>
     <span class="n">summary_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'outputs/eip_7983_from_to_summary_</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s1">.txt'</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">summary_filename</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"EIP-7983 FROM/TO ADDRESS ANALYSIS SUMMARY</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
@@ -11000,8 +10842,8 @@ CONCLUSIONS:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>✅ Comprehensive FROM/TO analysis exported to: outputs/eip_7983_from_to_analysis_20250710_083104.csv
-✅ Summary report saved to: outputs/eip_7983_from_to_summary_20250710_083104.txt
+<pre>✅ Comprehensive FROM/TO analysis exported to: outputs/eip_7983_from_to_analysis_20250710_090554.csv
+✅ Summary report saved to: outputs/eip_7983_from_to_summary_20250710_090554.txt
 
 📊 EXPORT SUMMARY:
   • Total addresses analyzed: 100
@@ -11010,115 +10852,6 @@ CONCLUSIONS:
   • Classified addresses: 52
   • Unique categories: 6
 </pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Appendix:-Data-Quality-Checks">Appendix: Data Quality Checks<a class="anchor-link" href="#Appendix:-Data-Quality-Checks">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check if data is loaded</span>
-<span class="k">if</span> <span class="n">df_all</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Please run the data loading cell first!"</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Data quality checks</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"DATA QUALITY CHECKS"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
-
-    <span class="c1"># Check for data consistency</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">1. Consistency Checks:"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   - All gas limits &gt; cap: </span><span class="si">{</span><span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'avg_gas_limit'</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">16_777_216</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   - All costs positive: </span><span class="si">{</span><span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'additional_cost_eth'</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   - Transaction counts positive: </span><span class="si">{</span><span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'transaction_count'</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-    <span class="c1"># Check for outliers</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">2. Outlier Detection:"</span><span class="p">)</span>
-    <span class="n">gas_outliers</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'avg_gas_limit'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">'avg_gas_limit'</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.99</span><span class="p">)]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   - Addresses with extreme gas usage (&gt;99th percentile): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gas_outliers</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   - Maximum gas limit seen: </span><span class="si">{</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'max_gas_limit'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-    <span class="c1"># Sanity checks</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">3. Sanity Checks:"</span><span class="p">)</span>
-    <span class="n">total_excess</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">'total_excess_gas'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">expected_cost</span> <span class="o">=</span> <span class="n">total_excess</span> <span class="o">*</span> <span class="mi">21000</span> <span class="o">/</span> <span class="mf">1e18</span>  <span class="c1"># Assuming 1 gwei base fee for simplicity</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   - Total excess gas: </span><span class="si">{</span><span class="n">total_excess</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"   - Addresses with max_gas &gt; 36M: </span><span class="si">{</span><span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">'max_gas_limit'</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">36_000_000</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">✅ All data quality checks passed!"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>DATA QUALITY CHECKS
-============================================================
-
-1. Consistency Checks:
-   - All gas limits &gt; cap: True
-   - All costs positive: True
-   - Transaction counts positive: True
-
-2. Outlier Detection:
-   - Addresses with extreme gas usage (&gt;99th percentile): 46
-   - Maximum gas limit seen: 36,000,000
-
-3. Sanity Checks:
-   - Total excess gas: 768,475,100,633
-   - Addresses with max_gas &gt; 36M: 0
-
-✅ All data quality checks passed!
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
 </div>
 </div>
 </div>
