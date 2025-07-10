@@ -22,7 +22,7 @@ BLOCKS_PER_DAY = 7200
 DAYS_TO_ANALYZE = 180
 PARTITION_SIZE = 1000
 BATCH_SIZE_PARTITIONS = 10
-CACHE_DIR = "gas_cap_cache_6m"
+CACHE_DIR = "outputs/6month_analysis/cache"
 
 def initialize_xatu():
     """Initialize the PyXatu client"""
@@ -481,19 +481,25 @@ The 6-month analysis confirms minimal and manageable impact:
 *Analysis based on partition-aware processing of 6 months of Ethereum mainnet data*
 """
     
+    # Ensure output directory exists
+    os.makedirs('outputs/6month_analysis/reports', exist_ok=True)
+    
     # Save report
-    report_file = f"gas_cap_6month_report_{timestamp}.md"
+    report_file = f"outputs/6month_analysis/reports/gas_cap_6month_report_{timestamp}.md"
     with open(report_file, 'w') as f:
         f.write(report)
     
     print(f"\n6-month report saved to: {report_file}")
+    
+    # Ensure data directory exists
+    os.makedirs('outputs/6month_analysis/data', exist_ok=True)
     
     # Save all addresses as CSV
     if results['all_addresses']:
         import csv
         
         # Top 50
-        csv_file = f"gas_cap_6month_top50_{timestamp}.csv"
+        csv_file = f"outputs/6month_analysis/data/gas_cap_6month_top50_{timestamp}.csv"
         with open(csv_file, 'w', newline='') as f:
             fieldnames = ['rank', 'address', 'transaction_count', 'avg_gas_limit', 
                          'max_gas_limit', 'total_excess_gas', 'additional_gas_cost', 
@@ -517,7 +523,7 @@ The 6-month analysis confirms minimal and manageable impact:
         print(f"Top 50 addresses saved to: {csv_file}")
         
         # All addresses
-        all_csv_file = f"gas_cap_6month_all_addresses_{timestamp}.csv"
+        all_csv_file = f"outputs/6month_analysis/data/gas_cap_6month_all_addresses_{timestamp}.csv"
         with open(all_csv_file, 'w', newline='') as f:
             # Ensure all required fields are included
             if results['all_addresses']:
@@ -538,7 +544,7 @@ The 6-month analysis confirms minimal and manageable impact:
     
     # Save to-address analysis
     if results.get('all_to_addresses'):
-        to_csv_file = f"gas_cap_6month_to_addresses_{timestamp}.csv"
+        to_csv_file = f"outputs/6month_analysis/data/gas_cap_6month_to_addresses_{timestamp}.csv"
         with open(to_csv_file, 'w', newline='') as f:
             fieldnames = list(results['all_to_addresses'][0].keys())
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -549,7 +555,7 @@ The 6-month analysis confirms minimal and manageable impact:
     
     # Save gas efficiency analysis
     if results.get('gas_efficiency'):
-        efficiency_file = f"gas_cap_6month_efficiency_{timestamp}.json"
+        efficiency_file = f"outputs/6month_analysis/data/gas_cap_6month_efficiency_{timestamp}.json"
         with open(efficiency_file, 'w') as f:
             json.dump(results['gas_efficiency'], f, indent=2)
         
@@ -720,8 +726,11 @@ def create_visualizations(results, timestamp):
     
     plt.tight_layout()
     
+    # Ensure visualization directory exists
+    os.makedirs('outputs/6month_analysis/visualizations', exist_ok=True)
+    
     # Save the figure
-    chart_file = f"gas_cap_6month_analysis_charts_{timestamp}.png"
+    chart_file = f"outputs/6month_analysis/visualizations/gas_cap_6month_analysis_charts_{timestamp}.png"
     plt.savefig(chart_file, dpi=300, bbox_inches='tight')
     print(f"Visualization charts saved to: {chart_file}")
     
@@ -733,7 +742,7 @@ def create_visualizations(results, timestamp):
 def save_individual_charts(results, timestamp):
     """Save individual charts for use in reports"""
     # Create directory for individual charts
-    charts_dir = f"gas_cap_charts_{timestamp}"
+    charts_dir = f"outputs/6month_analysis/visualizations/gas_cap_charts_{timestamp}"
     os.makedirs(charts_dir, exist_ok=True)
     
     # 1. To-Address Concentration Chart

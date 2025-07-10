@@ -1,0 +1,161 @@
+2025-07-07 07:49:22,378 - INFO - Clickhouse configs set
+2025-07-07 07:49:22,378 - INFO - Clickhouse URL: https://clickhouse.xatu.ethpandaops.io, User: arg
+2025-07-07 07:49:23,929 - INFO - Executing query: 
+        SELECT MAX(block_number) as latest_block 
+        FROM canonical_execution_transaction
+        WHERE meta_network_name = 'mainnet'
+        
+2025-07-07 07:49:29,762 - INFO - Query executed in 5.83 seconds
+2025-07-07 07:49:29,763 - INFO - Executing query: 
+    SELECT 
+        block_number,
+        transaction_hash,
+        from_address,
+        to_address,
+        gas_used,
+        gas_limit,
+        gas_price,
+        value,
+        transaction_type,
+        transaction_index
+    FROM canonical_execution_transaction
+    WHERE block_number >= 22578052
+    AND block_number < 22678052
+    AND meta_network_name = 'mainnet'
+    AND gas_used IS NOT NULL
+    AND gas_limit IS NOT NULL
+    ORDER BY block_number DESC, transaction_index
+    
+2025-07-07 07:51:03,666 - INFO - Query executed in 93.90 seconds
+Initializing PyXatu client...
+Config Path:  /home/devops/.pyxatu_config.json
+Fetching transaction data...
+Analyzing transactions from block 22578052 to 22678052
+Executing query to fetch transaction data...
+Fetched 20,159,411 transactions
+
+Basic Statistics:
+Gas Limit - Min: 21,000, Max: 36,000,000, Mean: 226,241
+Gas Used - Min: 21,000, Max: 35,888,566, Mean: 91,730
+
+Analyzing gas distribution statistics...
+
+================================================================================
+GAS DISTRIBUTION ANALYSIS - SKEWNESS & OUTLIERS
+================================================================================
+
+Distribution Statistics:
+  Mean: 226,241
+  Median: 75,000
+  Standard Deviation: 732,630
+  Skewness: 15.44 (highly right-skewed if > 1)
+
+Percentile Analysis:
+  p50: 75,000
+  p90: 424,125
+  p95: 641,134
+  p99: 2,000,000
+  p99.5: 4,540,000
+  p99.9: 10,500,000
+  p99.95: 12,600,000
+  p99.99: 25,416,303
+
+Outlier Analysis:
+  IQR: 208,284
+  Outlier Threshold (Q3 + 1.5*IQR): 541,710
+  Outliers: 1,246,670 (6.1841%)
+  Extreme Outlier Threshold (Q3 + 3*IQR): 854,136
+  Extreme Outliers: 766,587 (3.8026%)
+
+Analyzing gas cap impact with address and cost analysis...
+
+================================================================================
+GAS CAP IMPACT ANALYSIS REPORT - ADDRESS & COST FOCUS
+================================================================================
+
+Proposed Gas Cap: 16,777,216
+--------------------------------------------------
+Affected Transactions: 3,159 (0.02%)
+Unique Affected Addresses: 492
+
+Gas Limit Statistics (affected transactions):
+  Average: 25,208,201
+  Median: 26,021,000
+  Maximum: 36,000,000
+  Total Excess Gas: 26,633,482,356
+  Average Excess Gas per TX: 8,430,985
+
+Transaction Splitting Cost Impact:
+  Total Additional Costs: 0.1746 ETH
+  Average Additional Cost per TX: 0.000055 ETH
+
+Transaction Type Breakdown:
+  Type 2: 2242
+  Type 0: 914
+  Type 4: 2
+  Type 1: 1
+
+Top 10 Most Affected Addresses:
+Address                                    Affected TXs Total Excess Gas Additional Cost (ETH)
+------------------------------------------------------------------------------------------
+0x4fb9bbb1838ee0acb7b4d2e519a4c233198499fb 648          5989972032      0.009012            
+0xabd7a659d4c6e30c78899015f49b3513cf496351 201          1773379584      0.000934            
+0x08621813a1b33bc58a97f9d3cc819dbbdde8d572 117          1024957255      0.008978            
+0x2c3b6e74be767cd9722cdf4a4ca08c6910012b0a 75           823075341       0.000678            
+0xd4abcbef17e002266a15ce9b7a678c4030ef4b0f 52           687584768       0.003144            
+0x2855fbee020193d211de7beca52149dbc1555555 45           595025280       0.004626            
+0x85024d236f55294df581f4c8328da4eabefc3575 49           579707612       0.000535            
+0x41db6c3fcd594decda67ffa31ba013e6b562980f 38           502465792       0.002460            
+0x6582b7c80df319553a988f62436b8a1be6b2b24c 30           473079567       0.000351            
+0xee67263be078df8ce3f55d5bcc1d23eb0cdc61bb 48           414676176       0.000221            
+
+Top 5 Most Expensive Transactions to Split:
+Transaction Hash                                                   Splits  Additional Cost (ETH)
+-----------------------------------------------------------------------------------------------
+0x64198a0d0d837bf64d1f9a2682af0fd7cdd0c884e77a8cd36e42843196118a7f 2       0.001050            
+0x701cf21b407b73541df778bab1d1c9bf6f85c8424e34c521d5556cabf9fad65b 2       0.001050            
+0x842de57575df1ffa0febe3d5d890ff087aebdbff8bbc695c9515d9083431556a 2       0.001050            
+0xd247c06bd465a08b1558985171341a772daf4f29d0ab62fdbd9203734404b1d9 2       0.001050            
+0x8fe77b781e986b4d7cf70fce88fe3afb7b84a96fb0d10d83da885260ba4e0d11 2       0.001050            
+
+High Gas Transactions (>= 1,000,000 gas):
+--------------------------------------------------
+Count: 703491
+Percentage of total: 3.4896%
+
+Top 10 Highest Gas Limit Transactions:
+ block_number                                                   transaction_hash  gas_limit  gas_used                               from_address                                 to_address
+     22608727 0x1996954422a253a28ce4cbe2022d22e27d5c7f316c47017a97ac2f183c0e1ac1   36000000  16283333 0xbee26f064a6448bdb377144253bc76afc98195af 0x0de8bf93da2f7eecb3d9169422413a9bef4ef628
+     22579632 0x8ebdfeda146ad5e92e2e6e8fdf0f00ea25f4c82574d3d4452030eb29ac2f0b79   36000000  16284677 0x4993b17507783a233604f414bacc109279c6a798 0x0de8bf93da2f7eecb3d9169422413a9bef4ef628
+     22637686 0x49b861baff1be90aa8cd7b3e2f0f5942b9b9b122fbd58652433488f5e3b2f2d4   35999932  32141890 0xc4e7263dd870a29f1cfe438d1a7db48547b16888 0x0000000071727de22e5e9d8baf0edac6f37da032
+     22644229 0x9b6c58acc94bf3ad245635ba9037d8e9efc5a73a1ccaed8d5355b56bb7598a4a   35986421  23613789 0xfd42c11bf9518a078445b04857b205fee688b133 0x21fd239311b050bbee7f32850d99adc224761382
+     22619400 0xeb406aaccb8e4c1b8d43cd3d7452971b66503402cbc494c89bbb055792c5143e   35929691  35888566 0xa2bbb1c384b29bcec84968735feb4b09beafbfe4 0x0c67de5cc829703e6c4da8c3953f0f13c9e19a62
+     22609106 0x0b16d1352cf42390398502af955cf08674fe3c279e132f51399de503cc23567d   35752071  34644944 0x0000db5c8b030ae20308ac975898e09741e70000 0x00000ec1b0b023dc49982fb42cf3984cab400000
+     22652343 0x5ddff93a6823aed391bcafda890e777c5ede5821b3995668b9de5ee9b6447331   35744123  35191300 0x0000db5c8b030ae20308ac975898e09741e70000 0xed0e416e0feea5b484ba5c95d375545ac2b60572
+     22652346 0xaebeaa177e6dc22a97f1427d69145a1b4136260847f5fbfd3867830390f505ed   35743800  35190404 0x0000db5c8b030ae20308ac975898e09741e70000 0xed0e416e0feea5b484ba5c95d375545ac2b60572
+     22631097 0xf03376e600cc6ffb8a2f434165802f31a68bdf5a0c3a8288a25f73ac3c805b73   35174019  23464729 0x1d93a938203384d61da544310217e59e60a03eca 0x2d5805a423d6ce771f06972ad4499f120902631a
+     22601075 0xa3ffa66fa4fc6661f676aa3a3cf729b2521f07b30e059949440df4f7e4a52dee   34652454  21543173 0xb9012c2841532fbd4ec74060e01174d4216f93cb 0x0000000000c2d145a2526bd8c716263bfebe1a72
+
+Generating enhanced visualizations...
+Visualization saved: gas_distribution_log_scale_20250707_075128.html
+Visualization saved: additional_costs_by_cap_20250707_075128.html
+Visualization saved: affected_addresses_by_cap_20250707_075128.html
+Visualization saved: gas_distribution_boxplot_20250707_075128.html
+Visualization saved: gas_efficiency_outliers_20250707_075128.html
+
+Transaction data saved to: gas_cap_analysis_20250707_075131.csv
+Address impact analysis saved to: address_impact_16777216_20250707_075131.csv
+Transaction splitting costs saved to: splitting_costs_16777216_20250707_075131.csv
+Enhanced summary report saved to: gas_cap_summary_20250707_075131.csv
+
+================================================================================
+KEY INSIGHTS
+================================================================================
+Distribution Skewness: 15.44 (highly right-skewed)
+99th Percentile Gas Limit: 2,000,000
+Outliers (>541,710): 1,246,670 (6.1841%)
+
+Most Restrictive Cap (16,777,216):
+  - Affects 492 unique addresses
+  - Total additional costs: 0.1746 ETH
+  - Average additional cost per affected transaction: 0.000055 ETH

@@ -1,0 +1,25 @@
+{
+  "total_affected_addresses": 4601,
+  "total_affected_transactions": 96577,
+  "concentration_metrics": {
+    "gini_coefficient": -0.8488,
+    "top_10_address_share": 16.14,
+    "top_50_address_share": 37.64
+  },
+  "economic_impact": {
+    "total_additional_cost_eth": 0.2127,
+    "mean_cost_per_address_eth": 4.6e-05,
+    "median_cost_per_address_eth": 1.7e-05,
+    "max_cost_per_address_eth": 0.00105
+  },
+  "transaction_characteristics": {
+    "mean_gas_limit": 25454432,
+    "median_gas_limit": 25600000,
+    "mean_splits_required": 2.02
+  },
+  "address_categories": {
+    "heavy_users": 197,
+    "medium_users": 791,
+    "light_users": 3613
+  }
+}

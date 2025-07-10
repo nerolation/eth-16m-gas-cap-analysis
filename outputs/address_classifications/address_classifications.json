@@ -1,0 +1,328 @@
+{
+  "0x22dcb4798abf95b96c18cb6aade0229ae8dda3e1": {
+    "entity_name": "MCT: MXENFT Token User",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:45:27.341749"
+  },
+  "0xc87a8df3d07e06a929dc693245ef02630c848e85": {
+    "entity_name": "wywy.eth",
+    "category": "MEV Bot",
+    "notes": "",
+    "classified_at": "2025-07-07T09:46:59.753125"
+  },
+  "0x78ec5c6265b45b9c98cf682665a00a3e8f085ffe": {
+    "entity_name": "XEN User #1",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:47:29.438503"
+  },
+  "0x2a8b49767e70fb65d477f8881ecf8023add8941c": {
+    "entity_name": "XEN User #2",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:48:04.198014"
+  },
+  "0xcde69d6418004b2e44b101121bf72397adc696ff": {
+    "entity_name": "XEN User #3",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:48:22.251958"
+  },
+  "0x61fbb052daf37a3b50616669a10c4778f08f3c6f": {
+    "entity_name": "aifi2025.eth",
+    "category": "Unknown",
+    "notes": "",
+    "classified_at": "2025-07-07T09:49:10.404277"
+  },
+  "0x4abf0b30452399793ff3a90ac016072b12f5ff32": {
+    "entity_name": "liudaoyyds.eth",
+    "category": "Unknown",
+    "notes": "",
+    "classified_at": "2025-07-07T09:49:37.591653"
+  },
+  "0xd6aaaa96ed06389effbf0afb0b028c5b23a5ee77": {
+    "entity_name": "XEN User #4",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:49:59.709599"
+  },
+  "0x7340d1918ff7e6df680745985086ad350a2b5678": {
+    "entity_name": "XEN User #5",
+    "category": "Unknown",
+    "notes": "",
+    "classified_at": "2025-07-07T09:50:15.521080"
+  },
+  "0xb5b3f3f443fe3c1a42b6507ae211df69ac40c8d9": {
+    "entity_name": "XEN User #6",
+    "category": "Unknown",
+    "notes": "",
+    "classified_at": "2025-07-07T09:50:33.182524"
+  },
+  "0x9735776a06bcf178b3ca198230e178fe74333333": {
+    "entity_name": "XEN User #7",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:50:47.304523"
+  },
+  "0x23ab825aaffe678f6473133f7a7a90ab49f5b391": {
+    "entity_name": "XEN User #8",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:51:05.971465"
+  },
+  "0xa54d7d28bba53f816b2d8cf306aa985ddfc427e7": {
+    "entity_name": "XEN User #9",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:51:29.605559"
+  },
+  "0x70b00f8ffbaccbf662aff76dce82058296b46af9": {
+    "entity_name": "XEN User #10",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:51:47.464031"
+  },
+  "0x75c51351584199cdb072826c515cd08830ab4a0f": {
+    "entity_name": "XEN User #11",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:52:00.755719"
+  },
+  "0x07a4ae312eb8ba5b4f65de06da50cab3df648573": {
+    "entity_name": "XEN User #12",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:52:21.086144"
+  },
+  "0x4fb9bbb1838ee0acb7b4d2e519a4c233198499fb": {
+    "entity_name": "Fake Phishing",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:52:45.496754"
+  },
+  "0x97d618e3a0afeccfb5c50b5df258cd7e48650510": {
+    "entity_name": "Batch Sender #1",
+    "category": "Batch Processor",
+    "notes": "",
+    "classified_at": "2025-07-07T09:53:37.172673"
+  },
+  "0xee67263be078df8ce3f55d5bcc1d23eb0cdc61bb": {
+    "entity_name": "XEN User #13",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:53:54.835331"
+  },
+  "0xe81cfa76a9579686de04749c6c0d404e3b4a60b8": {
+    "entity_name": "XEN User #14",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:54:07.639465"
+  },
+  "0x6582b7c80df319553a988f62436b8a1be6b2b24c": {
+    "entity_name": "XEN User #15",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:54:22.779291"
+  },
+  "0x6896e929ab60d400a58b43fb536d61390b0c297f": {
+    "entity_name": "XEN User #16",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:54:38.707454"
+  },
+  "0xff0581a78019c65f3257429e053863304f555555": {
+    "entity_name": "XEN User #17",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:55:01.368495"
+  },
+  "0x18ada7d787e0adfbe12ea7b1dfc753d9eef97a01": {
+    "entity_name": "XEN User #19",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:55:14.656618"
+  },
+  "0x4f9e5e395bb7fa1a738e3bedc4dd7ceb98fc71f9": {
+    "entity_name": "XEN User #20",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T09:55:29.097273"
+  },
+  "0xe15e8a83416bb2791ba6c4b7cc51f4bec35198b1": {
+    "entity_name": "XEN User #15",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T11:17:29.318561"
+  },
+  "0x13d836ce6353f9aaf99606968775337d0b7411cf": {
+    "entity_name": "XEN User #16",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T11:17:45.725022"
+  },
+  "0x5fbca865c4fe63967e7ad2cb13d8ffee75c53e09": {
+    "entity_name": "XEN User #17",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T11:17:57.886961"
+  },
+  "0x076f1e43502fa3ee9854eeb34edee2091219e2f6": {
+    "entity_name": "XEN User #18",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T11:18:14.746835"
+  },
+  "0x3f240ed97ecedc4cf7491a4e708f978cd98bfb59": {
+    "entity_name": "XEN User #19",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T11:18:30.989677"
+  },
+  "0x4ff2edb4076830b3f6aa538b09bca861f63eab29": {
+    "entity_name": "XEN User #20",
+    "category": "Other",
+    "notes": "",
+    "classified_at": "2025-07-07T11:18:42.635355"
+  },
+  "0x0de8bf93da2f7eecb3d9169422413a9bef4ef628": {
+    "entity_name": "XEN Minter",
+    "category": "Other",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:08:06.726519"
+  },
+  "0x0a252663dbcc0b073063d6420a40319e438cfa59": {
+    "entity_name": "XEN Crypto Token",
+    "category": "Other",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:08:36.373327"
+  },
+  "0x0000000000771a79d0fc7f3b7fe270eb4498f20b": {
+    "entity_name": "XEN Batch Mint",
+    "category": "Unknown",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:08:56.769098"
+  },
+  "0x2f848984984d6c3c036174ce627703edaf780479": {
+    "entity_name": "XEN Batch Minter #2",
+    "category": "Unknown",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:09:19.697422"
+  },
+  "0x3328f7f4a1d1c57c35df56bbf0c9dcafca309c49": {
+    "entity_name": "Banana Gun Router",
+    "category": "Unknown",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:09:40.228860"
+  },
+  "0x0a9077aa8a6e3b6016e9936ae3541a6bf5740eba": {
+    "entity_name": "XEN Custom Contract",
+    "category": "Other",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:10:43.790329"
+  },
+  "0xc3c7b049678d84081dfd0ba21a6c7fdcc31c226f": {
+    "entity_name": "XEN Minter",
+    "category": "Other",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:11:06.703360"
+  },
+  "0x4041001020fcd967eac89b060388abc703119c73": {
+    "entity_name": "Batch Contract Creator",
+    "category": "Batch Processor",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:12:51.469234"
+  },
+  "0xbd8916626c5b1b9f28da68aa0bc4a3d29a0d33d5": {
+    "entity_name": "XEN Minter Contract",
+    "category": "Other",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:13:23.311843"
+  },
+  "0x4f4495243837681061c4743b74b3eedf548d56a5": {
+    "entity_name": "Axelar Batch",
+    "category": "Batch Processor",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:15:23.688659"
+  },
+  "0xd1f3b954608551e0365c248a5a539ef08f9587a3": {
+    "entity_name": "Batch Contract Creator",
+    "category": "Batch Processor",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:15:49.655791"
+  },
+  "0x8d5f7156eb384902b71ae991c563bb9ee47e0d68": {
+    "entity_name": "Fake Phishing",
+    "category": "Other",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:16:10.199196"
+  },
+  "0xf70091dd85e62021c888b4c861c45749b793f869": {
+    "entity_name": "Convex Finance Batch Distributor",
+    "category": "DEX",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:20:01.304467"
+  },
+  "0x00000000000000000000000000000000000face7": {
+    "entity_name": "Address used for data posting",
+    "category": "Data Storage",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:20:24.682411"
+  },
+  "0xddc796a66e8b83d0bccd97df33a6ccfba8fd60ea": {
+    "entity_name": "Wasteful Sender (gas used = 2% of gas limit)",
+    "category": "Unknown",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:26:54.722255"
+  },
+  "0x2d5805a423d6ce771f06972ad4499f120902631a": {
+    "entity_name": "Searcher Contract",
+    "category": "MEV Bot",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:28:06.262698"
+  },
+  "0xfef2359e77df8b769760d62cbb5ee676fe78f6c2": {
+    "entity_name": "XEN Miner",
+    "category": "Other",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:28:23.667705"
+  },
+  "0x3fc29836e84e471a053d2d9e80494a867d670ead": {
+    "entity_name": "Batch Token Distribute",
+    "category": "Batch Processor",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:29:21.796490"
+  },
+  "0xe957ea0b072910f508dd2009f4acb7238c308e29": {
+    "entity_name": "Ethcoin Distributor",
+    "category": "Batch Processor",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:31:07.136619"
+  },
+  "0xd152f549545093347a162dce210e7293f1452150": {
+    "entity_name": "Disperse.app",
+    "category": "Batch Processor",
+    "notes": "",
+    "address_type": "to",
+    "classified_at": "2025-07-07T14:31:33.801032"
+  }
+}

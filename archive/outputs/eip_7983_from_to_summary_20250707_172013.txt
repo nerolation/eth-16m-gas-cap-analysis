@@ -1,0 +1,52 @@
+EIP-7983 FROM/TO ADDRESS ANALYSIS SUMMARY
+================================================================================
+
+TOP 10 FROM ADDRESSES:
+  1. 0x22dcb479...dda3e1 - MCT: MXENFT Token User (Other)
+     Txs: 2,555, Cost: 0.000014 ETH
+  2. 0xc87a8df3...848e85 - wywy.eth (MEV Bot)
+     Txs: 2,205, Cost: 0.000009 ETH
+  3. 0x78ec5c62...085ffe - XEN User #1 (Other)
+     Txs: 1,712, Cost: 0.000011 ETH
+  4. 0x2a8b4976...d8941c - XEN User #2 (Other)
+     Txs: 1,559, Cost: 0.000022 ETH
+  5. 0xcde69d64...c696ff - XEN User #3 (Other)
+     Txs: 1,543, Cost: 0.000010 ETH
+  6. 0x61fbb052...8f3c6f - aifi2025.eth (Unknown)
+     Txs: 1,345, Cost: 0.000008 ETH
+  7. 0x4abf0b30...f5ff32 - liudaoyyds.eth (Unknown)
+     Txs: 1,287, Cost: 0.000012 ETH
+  8. 0xd6aaaa96...a5ee77 - XEN User #4 (Other)
+     Txs: 1,189, Cost: 0.000007 ETH
+  9. 0x7340d191...2b5678 - XEN User #5 (Unknown)
+     Txs: 1,100, Cost: 0.000008 ETH
+  10. 0xb5b3f3f4...40c8d9 - XEN User #6 (Unknown)
+     Txs: 1,089, Cost: 0.000010 ETH
+
+TOP 10 TO ADDRESSES:
+  1. 0x0de8bf93...4ef628 - XEN Minter (Other)
+     Txs: 31,406, Avg Gas: 23.61M
+  2. 0x0a252663...8cfa59 - XEN Crypto Token (Other)
+     Txs: 26,048, Avg Gas: 28.90M
+  3. 0x00000000...98f20b - XEN Batch Mint (Unknown)
+     Txs: 10,110, Avg Gas: 20.90M
+  4. 0x2f848984...780479 - XEN Batch Minter #2 (Unknown)
+     Txs: 6,688, Avg Gas: 23.54M
+  5. 0x3328f7f4...309c49 - Banana Gun Router (Unknown)
+     Txs: 1,994, Avg Gas: 30.00M
+  6. 0x0a9077aa...740eba - XEN Custom Contract (Other)
+     Txs: 1,345, Avg Gas: 19.44M
+  7. 0xc3c7b049...1c226f - XEN Minter (Other)
+     Txs: 1,302, Avg Gas: 25.70M
+  8. 0x40410010...119c73 - Batch Contract Creator (Batch Processor)
+     Txs: 1,130, Avg Gas: 21.44M
+  9. 0xbd891662...0d33d5 - XEN Minter Contract (Other)
+     Txs: 924, Avg Gas: 19.50M
+  10. 0x4f449524...8d56a5 - Axelar Batch (Batch Processor)
+     Txs: 906, Avg Gas: 20.00M
+
+CATEGORY BREAKDOWN:
+category  Batch Processor  DEX  Data Storage  MEV Bot  Other  Unknown
+type                                                                 
+FROM                    1    0             0        1     25       23
+TO                      6    1             1        1      7       34
