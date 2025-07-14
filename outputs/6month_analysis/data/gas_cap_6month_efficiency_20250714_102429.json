@@ -1,0 +1,10 @@
+{
+  "total_affected_transactions": 96564,
+  "unnecessary_high_limit_count": 18490,
+  "unnecessary_percentage": 19.147922621266726,
+  "avg_gas_limit": 24734127.44786877,
+  "avg_gas_used": 17668721.14184375,
+  "avg_efficiency": 0.7143458437773266,
+  "min_gas_used": 21000,
+  "max_gas_used": 35888566
+}

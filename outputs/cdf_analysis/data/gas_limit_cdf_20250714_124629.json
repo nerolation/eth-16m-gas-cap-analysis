@@ -1,0 +1,125 @@
+{
+  "timestamp": "20250714_124629",
+  "total_transactions": 244628466,
+  "cap_percentage": 99.96214136420248,
+  "proposed_cap": 16777216,
+  "cdf_data": [
+    {
+      "gas_limit": 21000,
+      "transaction_count": 63660952,
+      "cumulative_count": 63660952,
+      "cumulative_percentage": 26.02352581485754,
+      "min_gas": 21000,
+      "max_gas": 21000,
+      "avg_gas": 21000.0
+    },
+    {
+      "gas_limit": 50000,
+      "transaction_count": 26476853,
+      "cumulative_count": 90137805,
+      "cumulative_percentage": 36.846817737065805,
+      "min_gas": 21001,
+      "max_gas": 50000,
+      "avg_gas": 37522.10884597954
+    },
+    {
+      "gas_limit": 100000,
+      "transaction_count": 57403350,
+      "cumulative_count": 147541155,
+      "cumulative_percentage": 60.31234116474409,
+      "min_gas": 50001,
+      "max_gas": 100000,
+      "avg_gas": 75088.9647792681
+    },
+    {
+      "gas_limit": 200000,
+      "transaction_count": 22464166,
+      "cumulative_count": 170005321,
+      "cumulative_percentage": 69.49531417165491,
+      "min_gas": 100001,
+      "max_gas": 200000,
+      "avg_gas": 154865.92294897573
+    },
+    {
+      "gas_limit": 500000,
+      "transaction_count": 57028133,
+      "cumulative_count": 227033454,
+      "cumulative_percentage": 92.80745520433423,
+      "min_gas": 200001,
+      "max_gas": 500000,
+      "avg_gas": 301151.7630111615
+    },
+    {
+      "gas_limit": 1000000,
+      "transaction_count": 10482263,
+      "cumulative_count": 237515717,
+      "cumulative_percentage": 97.09242791065861,
+      "min_gas": 500001,
+      "max_gas": 1000000,
+      "avg_gas": 734625.8333179582
+    },
+    {
+      "gas_limit": 2000000,
+      "transaction_count": 4456730,
+      "cumulative_count": 241972447,
+      "cumulative_percentage": 98.91426413146866,
+      "min_gas": 1000001,
+      "max_gas": 2000000,
+      "avg_gas": 1457665.6272029043
+    },
+    {
+      "gas_limit": 5000000,
+      "transaction_count": 1778696,
+      "cumulative_count": 243751143,
+      "cumulative_percentage": 99.64136512224215,
+      "min_gas": 2000001,
+      "max_gas": 5000000,
+      "avg_gas": 3357260.683034088
+    },
+    {
+      "gas_limit": 10000000,
+      "transaction_count": 550995,
+      "cumulative_count": 244302138,
+      "cumulative_percentage": 99.8666026054384,
+      "min_gas": 5000001,
+      "max_gas": 10000000,
+      "avg_gas": 6967162.047573934
+    },
+    {
+      "gas_limit": 16777216,
+      "transaction_count": 233715,
+      "cumulative_count": 244535853,
+      "cumulative_percentage": 99.96214136420248,
+      "min_gas": 10000001,
+      "max_gas": 16774248,
+      "avg_gas": 12701015.462683182
+    },
+    {
+      "gas_limit": 20000000,
+      "transaction_count": 21524,
+      "cumulative_count": 244557377,
+      "cumulative_percentage": 99.97094001317083,
+      "min_gas": 16779544,
+      "max_gas": 20000000,
+      "avg_gas": 19246759.249117263
+    },
+    {
+      "gas_limit": 30000000,
+      "transaction_count": 55762,
+      "cumulative_count": 244613139,
+      "cumulative_percentage": 99.99373458034111,
+      "min_gas": 20000126,
+      "max_gas": 30000000,
+      "avg_gas": 24604560.00692228
+    },
+    {
+      "gas_limit": 30000001,
+      "transaction_count": 15327,
+      "cumulative_count": 244628466,
+      "cumulative_percentage": 100.0,
+      "min_gas": 30002591,
+      "max_gas": 36000000,
+      "avg_gas": 32752998.264174335
+    }
+  ]
+}

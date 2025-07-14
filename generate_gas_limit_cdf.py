@@ -10,15 +10,24 @@ import pyxatu
 import numpy as np
 import json
 import os
+import argparse
 from datetime import datetime
 
 # Configuration
 PROPOSED_GAS_CAP = 16_777_216  # 2^24
 BLOCKS_PER_DAY = 7200
-DAYS_TO_ANALYZE = 7  # Start with 1 week for CDF
+DAYS_TO_ANALYZE = 30*6 + 3
 PARTITION_SIZE = 1000
 BATCH_SIZE_PARTITIONS = 20
-CACHE_DIR = "gas_cdf_cache"
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Generate gas limit CDF data')
+parser.add_argument('-o', '--output', type=str, default='outputs', 
+                    help='Output directory (default: outputs)')
+args = parser.parse_args()
+
+OUTPUT_DIR = args.output
+CACHE_DIR = os.path.join(OUTPUT_DIR, "cdf_analysis/cache")
 
 def initialize_xatu():
     """Initialize the PyXatu client"""
@@ -204,8 +213,11 @@ def save_cdf_data(cdf_data, cap_percentage, total_transactions):
     """Save CDF data to file"""
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     
+    # Ensure output directory exists
+    os.makedirs(os.path.join(OUTPUT_DIR, 'cdf_analysis/data'), exist_ok=True)
+    
     # Save detailed CDF data
-    cdf_file = f"gas_limit_cdf_{timestamp}.json"
+    cdf_file = os.path.join(OUTPUT_DIR, f"cdf_analysis/data/gas_limit_cdf_{timestamp}.json")
     with open(cdf_file, 'w') as f:
         json.dump({
             'timestamp': timestamp,
@@ -235,7 +247,7 @@ Distribution Breakdown:
         if item['transaction_count'] > 0:
             summary += f"- Gas ≤ {item['gas_limit']:,}: {item['cumulative_percentage']:.2f}% ({item['transaction_count']:,} txs)\n"
     
-    summary_file = f"gas_limit_cdf_summary_{timestamp}.txt"
+    summary_file = os.path.join(OUTPUT_DIR, f"cdf_analysis/data/gas_limit_cdf_summary_{timestamp}.txt")
     with open(summary_file, 'w') as f:
         f.write(summary)
     

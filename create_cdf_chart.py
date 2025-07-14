@@ -7,6 +7,16 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 import glob
+import os
+import argparse
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Create CDF chart from gas limit data')
+parser.add_argument('-o', '--output', type=str, default='outputs',
+                    help='Output directory (default: outputs)')
+args = parser.parse_args()
+
+OUTPUT_DIR = args.output
 
 # Define color palette
 COLORS = {
@@ -25,7 +35,10 @@ COLORS = {
 PROPOSED_GAS_CAP = int(2**24)
 
 # Find and load CDF data
-cdf_files = sorted(glob.glob('gas_limit_cdf_*.json'))
+# First check in outputs/cdf_analysis/data, then in current directory for backward compatibility
+cdf_files = sorted(glob.glob(os.path.join(OUTPUT_DIR, 'cdf_analysis/data/gas_limit_cdf_*.json')))
+if not cdf_files:
+    cdf_files = sorted(glob.glob('gas_limit_cdf_*.json'))
 if not cdf_files:
     print("Error: CDF data not found!")
     exit(1)
@@ -116,7 +129,7 @@ ax.set_xscale('log')
 # Format the plot
 ax.set_xlabel('Gas Limit (log scale)', fontsize=14, fontweight='bold')
 ax.set_ylabel('Cumulative Percentage of Transactions (%)', fontsize=14, fontweight='bold')
-ax.set_title(f'Cumulative Distribution Function of Transaction Gas Limits\nBased on {total_transactions:,} transactions over 7 days', 
+ax.set_title(f'Cumulative Distribution Function of Transaction Gas Limits\nBased on {total_transactions:,} transactions over 6 months', 
              fontsize=16, fontweight='bold', pad=20)
 
 # Set axis limits
@@ -158,13 +171,16 @@ ax.set_yticklabels([f'{y}%' for y in y_ticks], fontsize=11)
 
 plt.tight_layout()
 
+# Ensure output directory exists
+os.makedirs(os.path.join(OUTPUT_DIR, 'cdf_analysis'), exist_ok=True)
+
 # Save the figure
-output_file = 'gas_limit_cdf_chart.png'
+output_file = os.path.join(OUTPUT_DIR, 'cdf_analysis/gas_limit_cdf_chart.png')
 plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white')
 print(f"\nChart saved to: {output_file}")
 
 # Also save as PDF for higher quality
-pdf_file = 'gas_limit_cdf_chart.pdf'
+pdf_file = os.path.join(OUTPUT_DIR, 'cdf_analysis/gas_limit_cdf_chart.pdf')
 plt.savefig(pdf_file, bbox_inches='tight', facecolor='white')
 print(f"PDF version saved to: {pdf_file}")
 

@@ -15,6 +15,7 @@ import gc
 from typing import Dict, List, Tuple
 import matplotlib.pyplot as plt
 import seaborn as sns
+import argparse
 
 # Configuration
 PROPOSED_GAS_CAP = 16_777_216  # 2^24
@@ -22,16 +23,18 @@ BLOCKS_PER_DAY = 7200
 DAYS_TO_ANALYZE = 180
 PARTITION_SIZE = 1000
 BATCH_SIZE_PARTITIONS = 10
-CACHE_DIR = "outputs/6month_analysis/cache"
+DEFAULT_OUTPUT_DIR = "outputs"
 
 def initialize_xatu():
     """Initialize the PyXatu client"""
     return pyxatu.PyXatu()
 
-def ensure_cache_dir():
+def ensure_cache_dir(output_dir):
     """Ensure cache directory exists"""
-    if not os.path.exists(CACHE_DIR):
-        os.makedirs(CACHE_DIR)
+    cache_dir = os.path.join(output_dir, "6month_analysis", "cache")
+    if not os.path.exists(cache_dir):
+        os.makedirs(cache_dir)
+    return cache_dir
 
 def get_latest_block(xatu):
     """Get the latest block number"""
@@ -50,7 +53,7 @@ def get_latest_block(xatu):
     
     return 22678052
 
-def process_partition_batch(xatu, start_block, end_block, batch_id):
+def process_partition_batch(xatu, start_block, end_block, batch_id, cache_dir):
     """Process a batch of partitions"""
     start_partition = (start_block // PARTITION_SIZE) * PARTITION_SIZE
     end_partition = ((end_block - 1) // PARTITION_SIZE + 1) * PARTITION_SIZE
@@ -198,7 +201,7 @@ def process_partition_batch(xatu, start_block, end_block, batch_id):
         'gas_efficiency': gas_efficiency
     }
     
-    cache_file = os.path.join(CACHE_DIR, f"batch_{batch_id:05d}.json")
+    cache_file = os.path.join(cache_dir, f"batch_{batch_id:05d}.json")
     with open(cache_file, 'w') as f:
         json.dump(batch_data, f)
     
@@ -206,7 +209,7 @@ def process_partition_batch(xatu, start_block, end_block, batch_id):
     
     return batch_data.get('summary', {})
 
-def aggregate_results():
+def aggregate_results(cache_dir):
     """Aggregate all batch results"""
     print("\nAggregating results from all batches...")
     
@@ -225,11 +228,11 @@ def aggregate_results():
         'max_gas_used': 0
     }
     
-    batch_files = sorted([f for f in os.listdir(CACHE_DIR) if f.startswith('batch_')])
+    batch_files = sorted([f for f in os.listdir(cache_dir) if f.startswith('batch_')])
     print(f"Found {len(batch_files)} batch files to aggregate")
     
     for batch_file in batch_files:
-        with open(os.path.join(CACHE_DIR, batch_file), 'r') as f:
+        with open(os.path.join(cache_dir, batch_file), 'r') as f:
             batch_data = json.load(f)
         
         # Aggregate summary
@@ -294,7 +297,7 @@ def aggregate_results():
         if agg['transaction_count'] > 0:
             avg_gas_limit = agg['total_gas_limit'] / agg['transaction_count']
             avg_gas_price = agg['total_gas_price'] / agg['transaction_count']
-            
+            print(avg_gas_price/1e9)
             # Calculate costs
             BASE_GAS_COST = 21000
             splits_required = np.ceil(avg_gas_limit / PROPOSED_GAS_CAP)
@@ -308,8 +311,12 @@ def aggregate_results():
                 'max_gas_limit': agg['max_gas_limit'],
                 'total_excess_gas': agg['total_excess_gas'],
                 'additional_gas_cost': additional_gas_cost,
+                'total_additional_gas_cost': additional_gas_cost * agg['transaction_count'],
                 'additional_cost_eth': additional_cost_eth,
-                'splits_required': splits_required
+                'total_additional_cost_eth': additional_cost_eth * agg['transaction_count'],
+                'splits_required': splits_required,
+                'total_splits_required': splits_required * agg['transaction_count']
+                
             })
     
     # Process to_addresses
@@ -364,7 +371,7 @@ def aggregate_results():
         'gas_efficiency': gas_efficiency_final
     }
 
-def generate_6month_report(results):
+def generate_6month_report(results, output_dir, cache_dir):
     """Generate comprehensive 6-month report"""
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     
@@ -432,7 +439,7 @@ This report presents a comprehensive 6-month empirical analysis of EIP-7983, whi
 - **Analysis Period**: 180 days (6 months)
 - **Processing Method**: Partition-aligned queries (1000-block partitions)
 - **Batch Size**: {BATCH_SIZE_PARTITIONS * PARTITION_SIZE:,} blocks per batch
-- **Total Batches Processed**: {len([f for f in os.listdir(CACHE_DIR) if f.startswith('batch_')])}
+- **Total Batches Processed**: {len([f for f in os.listdir(cache_dir) if f.startswith('batch_')])}
 
 ### Partition-Aware Optimization
 1. Queries aligned to 1000-block partition boundaries
@@ -482,24 +489,26 @@ The 6-month analysis confirms minimal and manageable impact:
 """
     
     # Ensure output directory exists
-    os.makedirs('outputs/6month_analysis/reports', exist_ok=True)
+    reports_dir = os.path.join(output_dir, '6month_analysis', 'reports')
+    os.makedirs(reports_dir, exist_ok=True)
     
     # Save report
-    report_file = f"outputs/6month_analysis/reports/gas_cap_6month_report_{timestamp}.md"
+    report_file = os.path.join(reports_dir, f"gas_cap_6month_report_{timestamp}.md")
     with open(report_file, 'w') as f:
         f.write(report)
     
     print(f"\n6-month report saved to: {report_file}")
     
     # Ensure data directory exists
-    os.makedirs('outputs/6month_analysis/data', exist_ok=True)
+    data_dir = os.path.join(output_dir, '6month_analysis', 'data')
+    os.makedirs(data_dir, exist_ok=True)
     
     # Save all addresses as CSV
     if results['all_addresses']:
         import csv
         
         # Top 50
-        csv_file = f"outputs/6month_analysis/data/gas_cap_6month_top50_{timestamp}.csv"
+        csv_file = os.path.join(data_dir, f"gas_cap_6month_top50_{timestamp}.csv")
         with open(csv_file, 'w', newline='') as f:
             fieldnames = ['rank', 'address', 'transaction_count', 'avg_gas_limit', 
                          'max_gas_limit', 'total_excess_gas', 'additional_gas_cost', 
@@ -523,7 +532,7 @@ The 6-month analysis confirms minimal and manageable impact:
         print(f"Top 50 addresses saved to: {csv_file}")
         
         # All addresses
-        all_csv_file = f"outputs/6month_analysis/data/gas_cap_6month_all_addresses_{timestamp}.csv"
+        all_csv_file = os.path.join(data_dir, f"gas_cap_6month_all_addresses_{timestamp}.csv")
         with open(all_csv_file, 'w', newline='') as f:
             # Ensure all required fields are included
             if results['all_addresses']:
@@ -534,7 +543,7 @@ The 6-month analysis confirms minimal and manageable impact:
                     fieldnames.append('additional_gas_cost')
             else:
                 fieldnames = ['address', 'transaction_count', 'avg_gas_limit', 'max_gas_limit', 
-                             'total_excess_gas', 'additional_gas_cost', 'additional_cost_eth', 'splits_required']
+                             'total_excess_gas', 'additional_gas_cost', 'total_additional_gas_cost', 'additional_cost_eth', 'total_additional_cost_eth', 'splits_required', 'total_splits_required']
             
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
@@ -544,7 +553,7 @@ The 6-month analysis confirms minimal and manageable impact:
     
     # Save to-address analysis
     if results.get('all_to_addresses'):
-        to_csv_file = f"outputs/6month_analysis/data/gas_cap_6month_to_addresses_{timestamp}.csv"
+        to_csv_file = os.path.join(data_dir, f"gas_cap_6month_to_addresses_{timestamp}.csv")
         with open(to_csv_file, 'w', newline='') as f:
             fieldnames = list(results['all_to_addresses'][0].keys())
             writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -555,7 +564,7 @@ The 6-month analysis confirms minimal and manageable impact:
     
     # Save gas efficiency analysis
     if results.get('gas_efficiency'):
-        efficiency_file = f"outputs/6month_analysis/data/gas_cap_6month_efficiency_{timestamp}.json"
+        efficiency_file = os.path.join(data_dir, f"gas_cap_6month_efficiency_{timestamp}.json")
         with open(efficiency_file, 'w') as f:
             json.dump(results['gas_efficiency'], f, indent=2)
         
@@ -563,7 +572,7 @@ The 6-month analysis confirms minimal and manageable impact:
     
     return report_file
 
-def create_visualizations(results, timestamp):
+def create_visualizations(results, timestamp, output_dir):
     """Create visualization charts for the analysis results"""
     # Set up the plot style
     plt.style.use('seaborn-v0_8-darkgrid')
@@ -727,22 +736,23 @@ def create_visualizations(results, timestamp):
     plt.tight_layout()
     
     # Ensure visualization directory exists
-    os.makedirs('outputs/6month_analysis/visualizations', exist_ok=True)
+    viz_dir = os.path.join(output_dir, '6month_analysis', 'visualizations')
+    os.makedirs(viz_dir, exist_ok=True)
     
     # Save the figure
-    chart_file = f"outputs/6month_analysis/visualizations/gas_cap_6month_analysis_charts_{timestamp}.png"
+    chart_file = os.path.join(viz_dir, f"gas_cap_6month_analysis_charts_{timestamp}.png")
     plt.savefig(chart_file, dpi=300, bbox_inches='tight')
     print(f"Visualization charts saved to: {chart_file}")
     
     # Also save individual charts
-    save_individual_charts(results, timestamp)
+    save_individual_charts(results, timestamp, output_dir)
     
     return chart_file
 
-def save_individual_charts(results, timestamp):
+def save_individual_charts(results, timestamp, output_dir):
     """Save individual charts for use in reports"""
     # Create directory for individual charts
-    charts_dir = f"outputs/6month_analysis/visualizations/gas_cap_charts_{timestamp}"
+    charts_dir = os.path.join(output_dir, '6month_analysis', 'visualizations', f'gas_cap_charts_{timestamp}')
     os.makedirs(charts_dir, exist_ok=True)
     
     # 1. To-Address Concentration Chart
@@ -784,9 +794,21 @@ def save_individual_charts(results, timestamp):
 
 def main():
     """Main function for 6-month analysis"""
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description='Analyze Ethereum transactions with gas cap impact')
+    parser.add_argument('--output-dir', '-o', 
+                        type=str, 
+                        default=DEFAULT_OUTPUT_DIR,
+                        help=f'Output directory for results (default: {DEFAULT_OUTPUT_DIR})')
+    
+    args = parser.parse_args()
+    output_dir = args.output_dir
+    
+    print(f"Using output directory: {output_dir}")
+    
     try:
         # Setup
-        ensure_cache_dir()
+        cache_dir = ensure_cache_dir(output_dir)
         print("Initializing PyXatu client...")
         xatu = initialize_xatu()
         
@@ -813,29 +835,29 @@ def main():
             batch_end = min(batch_start + batch_size, latest_block)
             
             # Check if already processed
-            cache_file = os.path.join(CACHE_DIR, f"batch_{batch_id:05d}.json")
+            cache_file = os.path.join(cache_dir, f"batch_{batch_id:05d}.json")
             if os.path.exists(cache_file):
                 print(f"\nBatch {batch_id} already processed, skipping...")
                 continue
             
             # Process batch
-            process_partition_batch(xatu, batch_start, batch_end, batch_id)
+            process_partition_batch(xatu, batch_start, batch_end, batch_id, cache_dir)
             
             # Progress
             progress = (batch_id + 1) / num_batches * 100
             print(f"Progress: {progress:.1f}%")
         
         # Aggregate results
-        final_results = aggregate_results()
+        final_results = aggregate_results(cache_dir)
         
         # Generate report
         print("\nGenerating 6-month report...")
-        report_file = generate_6month_report(final_results)
+        report_file = generate_6month_report(final_results, output_dir, cache_dir)
         
         # Generate visualizations
         print("\nCreating visualization charts...")
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        chart_file = create_visualizations(final_results, timestamp)
+        chart_file = create_visualizations(final_results, timestamp, output_dir)
         
         # Summary
         print("\n" + "="*80)
